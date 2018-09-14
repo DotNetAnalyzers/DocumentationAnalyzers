@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "DocumentationAnalyzers.Status.Generator": {
+      "commandName": "Project",
+      "commandLineArgs": "..\\..\\..\\..\\..\\DocumentationAnalyzers.sln",
+      "environmentVariables": {
+        "Configuration": "$(Configuration)"
+      }
+    }
+  }
+}

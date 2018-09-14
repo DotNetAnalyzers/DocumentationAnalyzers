@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26711.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocumentationAnalyzers", "DocumentationAnalyzers\DocumentationAnalyzers\DocumentationAnalyzers.csproj", "{A8F9D65E-7FCE-4B3B-984C-36AB446CA4DD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocumentationAnalyzers.CodeFixes", "DocumentationAnalyzers\DocumentationAnalyzers.CodeFixes\DocumentationAnalyzers.CodeFixes.csproj", "{D6361C01-DD4E-4886-A9DD-E47BD72B614E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocumentationAnalyzers.Test", "DocumentationAnalyzers\DocumentationAnalyzers.Test\DocumentationAnalyzers.Test.csproj", "{CC2315FA-F2E8-4931-BD23-0B88207C735C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocumentationAnalyzers.Test.CSharp7", "DocumentationAnalyzers\DocumentationAnalyzers.Test.CSharp7\DocumentationAnalyzers.Test.CSharp7.csproj", "{025F7981-5393-4E9E-A73C-9FACB58F920C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocumentationAnalyzers.Vsix", "DocumentationAnalyzers\DocumentationAnalyzers.Vsix\DocumentationAnalyzers.Vsix.csproj", "{CE6F326B-D3D7-4C8B-8D6C-DB1ECC859FF3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DocumentationAnalyzers.Status.Generator", "DocumentationAnalyzers\DocumentationAnalyzers.Status.Generator\DocumentationAnalyzers.Status.Generator.csproj", "{5DFCF8C1-F80D-4305-9D68-79FB60869BB7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8F9D65E-7FCE-4B3B-984C-36AB446CA4DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8F9D65E-7FCE-4B3B-984C-36AB446CA4DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8F9D65E-7FCE-4B3B-984C-36AB446CA4DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8F9D65E-7FCE-4B3B-984C-36AB446CA4DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6361C01-DD4E-4886-A9DD-E47BD72B614E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6361C01-DD4E-4886-A9DD-E47BD72B614E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6361C01-DD4E-4886-A9DD-E47BD72B614E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6361C01-DD4E-4886-A9DD-E47BD72B614E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC2315FA-F2E8-4931-BD23-0B88207C735C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC2315FA-F2E8-4931-BD23-0B88207C735C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC2315FA-F2E8-4931-BD23-0B88207C735C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC2315FA-F2E8-4931-BD23-0B88207C735C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{025F7981-5393-4E9E-A73C-9FACB58F920C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{025F7981-5393-4E9E-A73C-9FACB58F920C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{025F7981-5393-4E9E-A73C-9FACB58F920C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{025F7981-5393-4E9E-A73C-9FACB58F920C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE6F326B-D3D7-4C8B-8D6C-DB1ECC859FF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE6F326B-D3D7-4C8B-8D6C-DB1ECC859FF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE6F326B-D3D7-4C8B-8D6C-DB1ECC859FF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE6F326B-D3D7-4C8B-8D6C-DB1ECC859FF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DFCF8C1-F80D-4305-9D68-79FB60869BB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DFCF8C1-F80D-4305-9D68-79FB60869BB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DFCF8C1-F80D-4305-9D68-79FB60869BB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DFCF8C1-F80D-4305-9D68-79FB60869BB7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B2EF44F9-62BB-4A35-99DB-199EF8F54A73}
+	EndGlobalSection
+EndGlobal

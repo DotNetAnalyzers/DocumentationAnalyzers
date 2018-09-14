@@ -1,0 +1,37 @@
+﻿<?xml version="1.0"?>
+<package>
+  <metadata minClientVersion="2.7">
+    <id>DocumentationAnalyzers</id>
+    <version>0.0.0</version>
+    <title>DocumentationAnalyzers</title>
+    <authors>Sam Harwell et. al.</authors>
+    <owners>Sam Harwell</owners>
+    <licenseUrl>https://raw.githubusercontent.com/DotNetAnalyzers/DocumentationAnalyzers/$version$/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/DotNetAnalyzers/DocumentationAnalyzers</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>An implementation of .NET documentation rules using Roslyn analyzers and code fixes</description>
+    <releaseNotes>https://github.com/DotNetAnalyzers/DocumentationAnalyzers/releases/$version$</releaseNotes>
+    <copyright>Copyright 2018 Tunnel Vision Laboratories, LLC</copyright>
+    <tags>Documentation DotNetAnalyzers Roslyn Diagnostic Analyzer</tags>
+    <developmentDependency>true</developmentDependency>
+  </metadata>
+  <files>
+
+    <!-- Binaries and symbols -->
+    <file src="bin\$Configuration$\netstandard1.1\DocumentationAnalyzers.dll" target="analyzers\dotnet\cs" />
+    <file src="bin\$Configuration$\netstandard1.1\**\DocumentationAnalyzers.resources.dll" target="analyzers\dotnet\cs" />
+    <file src="bin\$Configuration$\netstandard1.1\DocumentationAnalyzers.pdb" target="analyzers\dotnet\cs" />
+    <file src="bin\$Configuration$\netstandard1.1\DocumentationAnalyzers.CodeFixes.dll" target="analyzers\dotnet\cs" />
+    <file src="bin\$Configuration$\netstandard1.1\**\DocumentationAnalyzers.CodeFixes.resources.dll" target="analyzers\dotnet\cs" />
+    <file src="bin\$Configuration$\netstandard1.1\DocumentationAnalyzers.CodeFixes.pdb" target="analyzers\dotnet\cs" />
+
+    <!-- Scripts -->
+    <file src="tools\install.ps1" target="tools\" />
+    <file src="tools\uninstall.ps1" target="tools\" />
+
+    <!-- Source code -->
+    <file src="..\DocumentationAnalyzers\**\*.cs" exclude="..\DocumentationAnalyzers\obj\**\*.cs" target="src"/>
+    <file src="**\*.cs" exclude="obj\**\*.cs;Properties\AssemblyInfo.cs" target="src"/>
+
+  </files>
+</package>

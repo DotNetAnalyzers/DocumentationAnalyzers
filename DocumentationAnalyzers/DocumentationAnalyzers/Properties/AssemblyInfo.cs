@@ -1,0 +1,24 @@
+﻿// Copyright (c) Tunnel Vision Laboratories, LLC. All Rights Reserved.
+// Licensed under the MIT license. See LICENSE in the project root for license information.
+
+using System;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+
+// General Information about an assembly is controlled through the following
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+[assembly: CLSCompliant(false)]
+
+// Setting ComVisible to false makes the types in this assembly not visible
+// to COM components.  If you need to access a type in this assembly from
+// COM, set the ComVisible attribute to true on that type.
+[assembly: ComVisible(false)]
+
+#if DEVELOPMENT_KEY
+[assembly: InternalsVisibleTo("DocumentationAnalyzers.CodeFixes, PublicKey=0024000004800000940000000602000000240000525341310004000001000100653fc78bb91f5f8741576d365ee395903ae2afe63f50c1fd5486729abb8fdd2815a95867090fc2e22d17a90c3fe35ec57ad06277427128d628ccd7b7c42fb9369bba28b2b7ca642b9d6231b5f0d984abbd65a780145e5efc9265fe0f4df9468e0e87fb4eb3f6125bac24aad003d97c1fe25ab65000ddbf7aabd744179169c1a2")]
+#else
+[assembly: InternalsVisibleTo("DocumentationAnalyzers.CodeFixes, PublicKey=00240000048000009400000006020000002400005253413100040000010001002164ae5e4cbf74e61559320713d2ada25842139fddf8665b1733e838ea1020d3df0569bb6b56e473173c3e9310f7600fb500fb93a56477eb94c0851c0196e9ea170b7b06d105c8ec15a1108e871c5daf738f8bcbb2a41d61a54a698c322d2fa0cf1cbc8a737c016d60f5e2a9a00bd59d73015bc681f54747ea1c73e1dbe1f4c7")]
+#endif
+[assembly: InternalsVisibleTo("DocumentationAnalyzers.Test, PublicKey=00240000048000009400000006020000002400005253413100040000010001004d394e527140f84e656e715fc026e74b57657f47ff20636a0d90719bd0fd86b49ccfe3feb0a486b08b994bf8d68ead40ce4a993019c701b4d52c4c86ed88491edae914154b238c8378736b87529fd91502426263242fc5b800ee7a25a8a34f838f2dd1d20a483ccdfa0f6e1f08afb0d650d90b024ab129c1b840189d27b845c8")]
+[assembly: InternalsVisibleTo("DocumentationAnalyzers.Test.CSharp7, PublicKey=00240000048000009400000006020000002400005253413100040000010001004d394e527140f84e656e715fc026e74b57657f47ff20636a0d90719bd0fd86b49ccfe3feb0a486b08b994bf8d68ead40ce4a993019c701b4d52c4c86ed88491edae914154b238c8378736b87529fd91502426263242fc5b800ee7a25a8a34f838f2dd1d20a483ccdfa0f6e1f08afb0d650d90b024ab129c1b840189d27b845c8")]

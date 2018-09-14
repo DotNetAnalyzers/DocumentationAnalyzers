@@ -1,0 +1,22 @@
+version: 1.0.{build}
+image: Visual Studio 2017
+init:
+- git config --global core.autocrlf true
+before_build:
+- nuget restore
+build:
+  project: DocumentationAnalyzers.sln
+  verbosity: minimal
+test_script:
+- cd build
+- ps: .\opencover-report.ps1 -Debug -NoBuild -NoReport -AppVeyor
+- cd ..
+- .\packages\Codecov.1.0.1\tools\codecov.exe -f ".\build\OpenCover.Reports\OpenCover.DocumentationAnalyzers.xml"
+- .\DocumentationAnalyzers\DocumentationAnalyzers.Status.Generator\bin\Debug\net46\DocumentationAnalyzers.Status.Generator.exe .\DocumentationAnalyzers.sln > DocumentationAnalyzers.Status.json
+cache:
+  - packages -> **\packages.config
+  - C:\Users\appveyor\.nuget\packages -> appveyor.yml
+artifacts:
+- path: 'DocumentationAnalyzers\**\*.vsix'
+- path: 'DocumentationAnalyzers\**\*.nupkg'
+- path: 'DocumentationAnalyzers.Status.json'
