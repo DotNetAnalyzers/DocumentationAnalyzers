@@ -121,7 +121,7 @@ namespace DocumentationAnalyzers.Status.Generator
         /// </returns>
         public override string ToString()
         {
-            return this.Id + " " + this.Name;
+            return Id + " " + Name;
         }
 
         /// <summary>

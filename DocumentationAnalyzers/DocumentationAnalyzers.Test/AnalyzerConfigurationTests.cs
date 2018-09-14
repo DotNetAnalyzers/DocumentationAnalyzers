@@ -62,11 +62,11 @@ namespace DocumentationAnalyzers.Test
 
         private class CSharpTest : CodeFixTest<XUnitVerifier>
         {
-            private readonly Type analyzerType;
+            private readonly Type _analyzerType;
 
             public CSharpTest(Type analyzerType)
             {
-                this.analyzerType = analyzerType;
+                _analyzerType = analyzerType;
             }
 
             public override string Language => LanguageNames.CSharp;
@@ -80,7 +80,7 @@ namespace DocumentationAnalyzers.Test
                 => new CodeFixProvider[0];
 
             protected override IEnumerable<DiagnosticAnalyzer> GetDiagnosticAnalyzers()
-                => new[] { (DiagnosticAnalyzer)Activator.CreateInstance(this.analyzerType) };
+                => new[] { (DiagnosticAnalyzer)Activator.CreateInstance(_analyzerType) };
         }
     }
 }

@@ -20,8 +20,8 @@ namespace DocumentationAnalyzers.Test
         /// <paramref name="id"/> in the original source.</param>
         public WorkItemAttribute(int id, string issueUri)
         {
-            this.Id = id;
-            this.Location = issueUri;
+            Id = id;
+            Location = issueUri;
         }
 
         public int Id

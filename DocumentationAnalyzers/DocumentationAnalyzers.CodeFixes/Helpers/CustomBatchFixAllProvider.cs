@@ -31,13 +31,13 @@ namespace DocumentationAnalyzers.Helpers
         {
             if (fixAllContext.Document != null)
             {
-                var documentsAndDiagnosticsToFixMap = await this.GetDocumentDiagnosticsToFixAsync(fixAllContext).ConfigureAwait(false);
-                return await this.GetFixAsync(documentsAndDiagnosticsToFixMap, fixAllContext).ConfigureAwait(false);
+                var documentsAndDiagnosticsToFixMap = await GetDocumentDiagnosticsToFixAsync(fixAllContext).ConfigureAwait(false);
+                return await GetFixAsync(documentsAndDiagnosticsToFixMap, fixAllContext).ConfigureAwait(false);
             }
             else
             {
-                var projectsAndDiagnosticsToFixMap = await this.GetProjectDiagnosticsToFixAsync(fixAllContext).ConfigureAwait(false);
-                return await this.GetFixAsync(projectsAndDiagnosticsToFixMap, fixAllContext).ConfigureAwait(false);
+                var projectsAndDiagnosticsToFixMap = await GetProjectDiagnosticsToFixAsync(fixAllContext).ConfigureAwait(false);
+                return await GetFixAsync(projectsAndDiagnosticsToFixMap, fixAllContext).ConfigureAwait(false);
             }
         }
 
@@ -61,14 +61,14 @@ namespace DocumentationAnalyzers.Helpers
 
                     var document = documents[index];
                     fixesBag[index] = new List<CodeAction>();
-                    fixOperations.Add(this.AddDocumentFixesAsync(document, documentsAndDiagnosticsToFixMap[document], fixesBag[index].Add, fixAllContext));
+                    fixOperations.Add(AddDocumentFixesAsync(document, documentsAndDiagnosticsToFixMap[document], fixesBag[index].Add, fixAllContext));
                 }
 
                 await Task.WhenAll(fixOperations).ConfigureAwait(false);
 
                 if (fixesBag.Any(fixes => fixes.Count > 0))
                 {
-                    return await this.TryGetMergedFixAsync(fixesBag.SelectMany(i => i), fixAllContext).ConfigureAwait(false);
+                    return await TryGetMergedFixAsync(fixesBag.SelectMany(i => i), fixAllContext).ConfigureAwait(false);
                 }
             }
 
@@ -149,14 +149,14 @@ namespace DocumentationAnalyzers.Helpers
                     index++;
                     var diagnostics = projectsAndDiagnosticsToFixMap[project];
                     fixesBag[index] = new List<CodeAction>();
-                    fixOperations.Add(this.AddProjectFixesAsync(project, diagnostics, fixesBag[index].Add, fixAllContext));
+                    fixOperations.Add(AddProjectFixesAsync(project, diagnostics, fixesBag[index].Add, fixAllContext));
                 }
 
                 await Task.WhenAll(fixOperations).ConfigureAwait(false);
 
                 if (fixesBag.Any(fixes => fixes.Count > 0))
                 {
-                    return await this.TryGetMergedFixAsync(fixesBag.SelectMany(i => i), fixAllContext).ConfigureAwait(false);
+                    return await TryGetMergedFixAsync(fixesBag.SelectMany(i => i), fixAllContext).ConfigureAwait(false);
                 }
             }
 
@@ -181,10 +181,10 @@ namespace DocumentationAnalyzers.Helpers
             }
 
             var solution = fixAllContext.Solution;
-            var newSolution = await this.TryMergeFixesAsync(solution, batchOfFixes, fixAllContext.CancellationToken).ConfigureAwait(false);
+            var newSolution = await TryMergeFixesAsync(solution, batchOfFixes, fixAllContext.CancellationToken).ConfigureAwait(false);
             if (newSolution != null && newSolution != solution)
             {
-                var title = this.GetFixAllTitle(fixAllContext);
+                var title = GetFixAllTitle(fixAllContext);
                 return CodeAction.Create(title, cancellationToken => Task.FromResult(newSolution));
             }
 

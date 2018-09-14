@@ -27,7 +27,7 @@ namespace DocumentationAnalyzers
         /// <param name="reason">The reason why the <see cref="DiagnosticAnalyzer"/> does not have a code fix.</param>
         public NoCodeFixAttribute(string reason)
         {
-            this.Reason = reason;
+            Reason = reason;
         }
 
         /// <summary>
