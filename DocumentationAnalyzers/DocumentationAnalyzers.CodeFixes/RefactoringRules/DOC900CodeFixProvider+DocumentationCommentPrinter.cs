@@ -266,9 +266,9 @@ namespace DocumentationAnalyzers.RefactoringRules
 
                     case BlockTag.ListItem:
                         writer.EnsureLine();
-                        writer.WriteConstant("<item>");
+                        writer.WriteConstant("<item><description>");
 
-                        stackLiteral = "</item>";
+                        stackLiteral = "</description></item>";
                         stackTight = tight;
                         visitChildren = true;
                         break;

@@ -55,9 +55,9 @@ class TestClass { }
 ///$$ <summary>
 /// <para>Para 1</para>
 /// <list type=""bullet"">
-/// <item>Item 1</item>
-/// <item>Item 2</item>
-/// <item>Item 3</item>
+/// <item><description>Item 1</description></item>
+/// <item><description>Item 2</description></item>
+/// <item><description>Item 3</description></item>
 /// </list>
 /// </summary>
 class TestClass { }
@@ -83,9 +83,9 @@ class TestClass { }
 ///$$ <summary>
 /// <para>Para 1</para>
 /// <list type=""number"">
-/// <item>Item 1</item>
-/// <item>Item 2</item>
-/// <item>Item 3</item>
+/// <item><description>Item 1</description></item>
+/// <item><description>Item 2</description></item>
+/// <item><description>Item 3</description></item>
 /// </list>
 /// </summary>
 class TestClass { }
