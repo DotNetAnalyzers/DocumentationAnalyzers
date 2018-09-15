@@ -61,15 +61,15 @@ namespace DocumentationAnalyzers.Helpers
             }
         }
 
+        public static DocumentationCommentTriviaSyntax ReplaceExteriorTrivia(this DocumentationCommentTriviaSyntax node, SyntaxTrivia trivia)
+        {
+            return node.ReplaceExteriorTriviaImpl(trivia);
+        }
+
         public static T ReplaceExteriorTrivia<T>(this T node, SyntaxTrivia trivia)
             where T : XmlNodeSyntax
         {
-            // Make sure to include a space after the '///' characters.
-            SyntaxTrivia triviaWithSpace = SyntaxFactory.DocumentationCommentExterior(trivia.ToString() + " ");
-
-            return node.ReplaceTrivia(
-                node.DescendantTrivia(descendIntoTrivia: true).Where(i => i.IsKind(SyntaxKind.DocumentationCommentExteriorTrivia)),
-                (originalTrivia, rewrittenTrivia) => SelectExteriorTrivia(rewrittenTrivia, trivia, triviaWithSpace));
+            return node.ReplaceExteriorTriviaImpl(trivia);
         }
 
         public static SyntaxList<XmlNodeSyntax> WithoutFirstAndLastNewlines(this SyntaxList<XmlNodeSyntax> summaryContent)
@@ -181,14 +181,28 @@ namespace DocumentationAnalyzers.Helpers
                     string trimmed = firstTokenText.TrimStart();
                     if (trimmed != firstTokenText)
                     {
-                        SyntaxToken newFirstToken = SyntaxFactory.Token(
-                            firstTextToken.LeadingTrivia,
-                            firstTextToken.Kind(),
-                            trimmed,
-                            firstTextToken.ValueText.TrimStart(),
-                            firstTextToken.TrailingTrivia);
+                        if (trimmed.Length == 0)
+                        {
+                            if (firstTextSyntax.TextTokens.Count == 1)
+                            {
+                                summaryContent = summaryContent.Remove(firstTextSyntax);
+                            }
+                            else
+                            {
+                                summaryContent = summaryContent.Replace(firstTextSyntax, firstTextSyntax.WithTextTokens(firstTextSyntax.TextTokens.RemoveAt(0)));
+                            }
+                        }
+                        else
+                        {
+                            SyntaxToken newFirstToken = SyntaxFactory.Token(
+                                firstTextToken.LeadingTrivia,
+                                firstTextToken.Kind(),
+                                trimmed,
+                                firstTextToken.ValueText.TrimStart(),
+                                firstTextToken.TrailingTrivia);
 
-                        summaryContent = summaryContent.Replace(firstTextSyntax, firstTextSyntax.ReplaceToken(firstTextToken, newFirstToken));
+                            summaryContent = summaryContent.Replace(firstTextSyntax, firstTextSyntax.ReplaceToken(firstTextToken, newFirstToken));
+                        }
                     }
                 }
             }
@@ -241,6 +255,17 @@ namespace DocumentationAnalyzers.Helpers
         {
             return (element as XmlElementSyntax)?.StartTag?.Name
                 ?? (element as XmlEmptyElementSyntax)?.Name;
+        }
+
+        private static T ReplaceExteriorTriviaImpl<T>(this T node, SyntaxTrivia trivia)
+            where T : SyntaxNode
+        {
+            // Make sure to include a space after the '///' characters.
+            SyntaxTrivia triviaWithSpace = SyntaxFactory.DocumentationCommentExterior(trivia.ToString() + " ");
+
+            return node.ReplaceTrivia(
+                node.DescendantTrivia(descendIntoTrivia: true).Where(i => i.IsKind(SyntaxKind.DocumentationCommentExteriorTrivia)),
+                (originalTrivia, rewrittenTrivia) => SelectExteriorTrivia(rewrittenTrivia, trivia, triviaWithSpace));
         }
 
         private static SyntaxTrivia SelectExteriorTrivia(SyntaxTrivia rewrittenTrivia, SyntaxTrivia trivia, SyntaxTrivia triviaWithSpace)

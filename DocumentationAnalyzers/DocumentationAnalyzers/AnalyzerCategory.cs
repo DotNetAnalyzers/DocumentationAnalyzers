@@ -12,5 +12,10 @@ namespace DocumentationAnalyzers
         /// Category definition for style rules.
         /// </summary>
         public const string StyleRules = nameof(DocumentationAnalyzers) + "." + nameof(StyleRules);
+
+        /// <summary>
+        /// Category definition for refactorings.
+        /// </summary>
+        public const string Refactorings = nameof(DocumentationAnalyzers) + "." + nameof(Refactorings);
     }
 }

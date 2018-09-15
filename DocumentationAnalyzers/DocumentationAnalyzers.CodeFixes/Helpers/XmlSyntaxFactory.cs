@@ -73,9 +73,9 @@ namespace DocumentationAnalyzers.Helpers
             return SyntaxFactory.List(nodes);
         }
 
-        public static XmlTextSyntax Text(string value)
+        public static XmlTextSyntax Text(string value, bool xmlEscape = true)
         {
-            return Text(TextLiteral(value));
+            return Text(TextLiteral(value, escapeQuotes: false, xmlEscape));
         }
 
         public static XmlTextSyntax Text(params SyntaxToken[] textTokens)
@@ -162,12 +162,12 @@ namespace DocumentationAnalyzers.Helpers
 
         public static SyntaxToken TextLiteral(string value)
         {
-            return TextLiteral(value, false);
+            return TextLiteral(value, escapeQuotes: false);
         }
 
-        public static SyntaxToken TextLiteral(string value, bool escapeQuotes)
+        public static SyntaxToken TextLiteral(string value, bool escapeQuotes, bool xmlEscape = true)
         {
-            string encoded = new XText(value).ToString();
+            string encoded = xmlEscape ? new XText(value).ToString() : value;
             if (escapeQuotes)
             {
                 encoded = encoded.Replace("\"", "&quot;");
