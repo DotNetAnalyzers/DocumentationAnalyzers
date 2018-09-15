@@ -155,8 +155,11 @@ namespace DocumentationAnalyzers.RefactoringRules
             SyntaxTrivia leadingTrivia = SyntaxFactory.DocumentationCommentExterior(leadingTriviaBuilder.ToString());
 
             string newLineText = context.Document.Project.Solution.Workspace.Options.GetOption(FormattingOptions.NewLine, LanguageNames.CSharp);
+            var semanticModel = await context.Document.GetSemanticModelAsync(context.CancellationToken);
+            var documentedSymbol = semanticModel.GetDeclaredSymbol(parentToken.Parent.FirstAncestorOrSelf<SyntaxNode>(SyntaxNodeExtensionsEx.IsSymbolDeclaration), context.CancellationToken);
+
             DocumentationCommentTriviaSyntax contentsOnly = RemoveExteriorTrivia(documentationCommentTriviaSyntax);
-            contentsOnly = contentsOnly.ReplaceNodes(contentsOnly.ChildNodes(), (originalNode, rewrittenNode) => RenderBlockElementAsMarkdown(originalNode, rewrittenNode, newLineText));
+            contentsOnly = contentsOnly.ReplaceNodes(contentsOnly.ChildNodes(), (originalNode, rewrittenNode) => RenderBlockElementAsMarkdown(originalNode, rewrittenNode, newLineText, documentedSymbol));
             string renderedContent = contentsOnly.Content.ToFullString();
             string[] lines = renderedContent.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
             SyntaxList<XmlNodeSyntax> newContent = XmlSyntaxFactory.List();
@@ -262,7 +265,7 @@ namespace DocumentationAnalyzers.RefactoringRules
             return rewrittenNode.WithContent(content);
         }
 
-        private SyntaxNode RenderBlockElementAsMarkdown(SyntaxNode originalNode, SyntaxNode rewrittenNode, string newLineText)
+        private SyntaxNode RenderBlockElementAsMarkdown(SyntaxNode originalNode, SyntaxNode rewrittenNode, string newLineText, ISymbol documentedSymbol)
         {
             if (!(rewrittenNode is XmlElementSyntax elementSyntax))
             {
@@ -282,7 +285,7 @@ namespace DocumentationAnalyzers.RefactoringRules
                 return rewrittenNode;
             }
 
-            string rendered = RenderAsMarkdown(elementSyntax.Content.ToString()).Trim();
+            string rendered = RenderAsMarkdown(elementSyntax.Content.ToString(), documentedSymbol).Trim();
             return elementSyntax.WithContent(
                 XmlSyntaxFactory.List(
                     XmlSyntaxFactory.NewLine(newLineText).WithoutTrailingTrivia(),
@@ -291,7 +294,7 @@ namespace DocumentationAnalyzers.RefactoringRules
                     XmlSyntaxFactory.Text(" ")));
         }
 
-        private string RenderAsMarkdown(string text)
+        private string RenderAsMarkdown(string text, ISymbol documentedSymbol)
         {
             Block document;
             using (var reader = new StringReader(text))
@@ -303,7 +306,7 @@ namespace DocumentationAnalyzers.RefactoringRules
             StringBuilder builder = new StringBuilder();
             using (var writer = new StringWriter(builder))
             {
-                DocumentationCommentPrinter.BlocksToHtml(writer, document, CommonMarkSettings.Default);
+                DocumentationCommentPrinter.BlocksToHtml(writer, document, CommonMarkSettings.Default, documentedSymbol);
             }
 
             return builder.ToString();

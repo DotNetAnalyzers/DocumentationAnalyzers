@@ -3,11 +3,14 @@
 
 namespace DocumentationAnalyzers.RefactoringRules
 {
+    using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Text;
     using CommonMark;
     using CommonMark.Syntax;
+    using DocumentationAnalyzers.Helpers;
+    using Microsoft.CodeAnalysis;
 
     internal partial class DOC900CodeFixProvider
     {
@@ -41,10 +44,10 @@ namespace DocumentationAnalyzers.RefactoringRules
             /// Convert a block list to HTML.  Returns 0 on success, and sets result.
             /// </summary>
             /// <remarks>Orig: blocks_to_html.</remarks>
-            public static void BlocksToHtml(System.IO.TextWriter writer, Block block, CommonMarkSettings settings)
+            public static void BlocksToHtml(System.IO.TextWriter writer, Block block, CommonMarkSettings settings, ISymbol documentedSymbol)
             {
                 var wrapper = new DocumentationCommentTextWriter(writer);
-                BlocksToHtmlInner(wrapper, block, settings);
+                BlocksToHtmlInner(wrapper, block, settings, documentedSymbol);
             }
 
             /// <summary>
@@ -215,7 +218,7 @@ namespace DocumentationAnalyzers.RefactoringRules
                 target.Write(buffer, lastPos - 0, part.Length - lastPos + 0);
             }
 
-            private static void BlocksToHtmlInner(DocumentationCommentTextWriter writer, Block block, CommonMarkSettings settings)
+            private static void BlocksToHtmlInner(DocumentationCommentTextWriter writer, Block block, CommonMarkSettings settings, ISymbol documentedSymbol)
             {
                 var stack = new Stack<BlockStackEntry>();
                 var inlineStack = new Stack<InlineStackEntry>();
@@ -240,13 +243,13 @@ namespace DocumentationAnalyzers.RefactoringRules
                     case BlockTag.Paragraph:
                         if (tight)
                         {
-                            InlinesToHtml(writer, block.InlineContent, settings, inlineStack);
+                            InlinesToHtml(writer, block.InlineContent, settings, documentedSymbol, inlineStack);
                         }
                         else
                         {
                             writer.EnsureLine();
                             writer.WriteConstant("<para>");
-                            InlinesToHtml(writer, block.InlineContent, settings, inlineStack);
+                            InlinesToHtml(writer, block.InlineContent, settings, documentedSymbol, inlineStack);
                             writer.WriteLineConstant("</para>");
                         }
 
@@ -295,7 +298,7 @@ namespace DocumentationAnalyzers.RefactoringRules
 
                         x = block.Heading.Level;
                         writer.WriteConstant(x > 0 && x < 7 ? HeaderOpenerTags[x - 1] : "<h" + x.ToString(CultureInfo.InvariantCulture) + ">");
-                        InlinesToHtml(writer, block.InlineContent, settings, inlineStack);
+                        InlinesToHtml(writer, block.InlineContent, settings, documentedSymbol, inlineStack);
                         writer.WriteLineConstant(x > 0 && x < 7 ? HeaderCloserTags[x - 1] : "</h" + x.ToString(CultureInfo.InvariantCulture) + ">");
                         break;
 
@@ -463,7 +466,7 @@ namespace DocumentationAnalyzers.RefactoringRules
             /// <summary>
             /// Writes the inline list to the given writer as HTML code.
             /// </summary>
-            private static void InlinesToHtml(DocumentationCommentTextWriter writer, Inline inline, CommonMarkSettings settings, Stack<InlineStackEntry> stack)
+            private static void InlinesToHtml(DocumentationCommentTextWriter writer, Inline inline, CommonMarkSettings settings, ISymbol documentedSymbol, Stack<InlineStackEntry> stack)
             {
                 var uriResolver = settings.UriResolver;
                 bool withinLink = false;
@@ -498,9 +501,25 @@ namespace DocumentationAnalyzers.RefactoringRules
                         break;
 
                     case InlineTag.Code:
-                        writer.WriteConstant("<c>");
-                        EscapeHtml(inline.LiteralContent, writer);
-                        writer.WriteConstant("</c>");
+                        if (documentedSymbol.HasAnyParameter(inline.LiteralContent, StringComparer.Ordinal))
+                        {
+                            writer.WriteConstant("<paramref name=\"");
+                            EscapeHtml(inline.LiteralContent, writer);
+                            writer.WriteConstant("\"/>");
+                        }
+                        else if (documentedSymbol.HasAnyTypeParameter(inline.LiteralContent, StringComparer.Ordinal))
+                        {
+                            writer.WriteConstant("<typeparamref name=\"");
+                            EscapeHtml(inline.LiteralContent, writer);
+                            writer.WriteConstant("\"/>");
+                        }
+                        else
+                        {
+                            writer.WriteConstant("<c>");
+                            EscapeHtml(inline.LiteralContent, writer);
+                            writer.WriteConstant("</c>");
+                        }
+
                         break;
 
                     case InlineTag.RawHtml:

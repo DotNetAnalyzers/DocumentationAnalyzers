@@ -179,7 +179,7 @@ class TestClass {
             var fixedCode = @"
 class TestClass {
     ///$$ <summary>
-    /// Provide a value for <c>param</c>.
+    /// Provide a value for <paramref name=""param""/>.
     /// </summary>
     void Method(int param) { }
 }
@@ -195,6 +195,45 @@ class TestClass {
                 // The first iteration fully renders the documentation. The second iteration offers a code fix to render
                 // documentation, but no changes are made by the fix so the iterations stop.
                 NumberOfIncrementalIterations = 2,
+            }.RunAsync();
+        }
+
+        [Fact]
+        public async Task TestLocalTypeParameterReferenceAsync()
+        {
+            var testCode = @"
+///$$ <summary>
+/// Provide a value for `T`.
+/// </summary>
+class TestClass<T> {
+    ///$$ <summary>
+    /// Provide a value for `T2`.
+    /// </summary>
+    void Method<T2>() { }
+}
+";
+            var fixedCode = @"
+///$$ <summary>
+/// Provide a value for <typeparamref name=""T""/>.
+/// </summary>
+class TestClass<T> {
+    ///$$ <summary>
+    /// Provide a value for <typeparamref name=""T2""/>.
+    /// </summary>
+    void Method<T2>() { }
+}
+";
+
+            await new CSharpCodeFixTest<DOC900RenderAsMarkdown, DOC900CodeFixProvider, XUnitVerifier>
+            {
+                TestCode = testCode,
+                FixedCode = fixedCode,
+                FixedState = { MarkupHandling = MarkupMode.Allow },
+                BatchFixedState = { MarkupHandling = MarkupMode.Allow },
+
+                // The first iteration fully renders the documentation. The second iteration offers a code fix to render
+                // documentation, but no changes are made by the fix so the iterations stop.
+                NumberOfIncrementalIterations = 3,
             }.RunAsync();
         }
     }
