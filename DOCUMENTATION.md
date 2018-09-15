@@ -6,4 +6,8 @@ DocumentationAnalyzers provides warnings that indicate documentation rule violat
 
 Rules related to the style of documentation comments.
 
+**[Refactorings (DOC900-)](docs/Refactorings.md)**
+
+Additional refactorings provided when the analyzer is installed.
+
 ### Additional documentation
