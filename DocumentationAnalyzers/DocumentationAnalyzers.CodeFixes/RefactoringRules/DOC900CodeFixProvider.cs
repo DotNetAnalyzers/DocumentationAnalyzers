@@ -273,6 +273,7 @@ namespace DocumentationAnalyzers.RefactoringRules
             {
             case XmlCommentHelper.SummaryXmlTag:
             case XmlCommentHelper.RemarksXmlTag:
+            case XmlCommentHelper.ExampleXmlTag:
             case XmlCommentHelper.ReturnsXmlTag:
             case XmlCommentHelper.ValueXmlTag:
                 break;
