@@ -3,6 +3,7 @@
 
 namespace DocumentationAnalyzers.Test.RefactoringRules
 {
+    using System;
     using System.Threading.Tasks;
     using DocumentationAnalyzers.RefactoringRules;
     using Microsoft.CodeAnalysis.CSharp.Testing;
@@ -34,17 +35,7 @@ class TestClass { }
 class TestClass { }
 ";
 
-            await new CSharpCodeFixTest<DOC900RenderAsMarkdown, DOC900CodeFixProvider, XUnitVerifier>
-            {
-                TestCode = testCode,
-                FixedCode = fixedCode,
-                FixedState = { MarkupHandling = MarkupMode.Allow },
-                BatchFixedState = { MarkupHandling = MarkupMode.Allow },
-
-                // The first iteration fully renders the documentation. The second iteration offers a code fix to render
-                // documentation, but no changes are made by the fix so the iterations stop.
-                NumberOfIncrementalIterations = 2,
-            }.RunAsync();
+            await VerifyCodeFixAsync(testCode, fixedCode);
         }
 
         [Fact]
@@ -72,17 +63,7 @@ class TestClass { }
 class TestClass { }
 ";
 
-            await new CSharpCodeFixTest<DOC900RenderAsMarkdown, DOC900CodeFixProvider, XUnitVerifier>
-            {
-                TestCode = testCode,
-                FixedCode = fixedCode,
-                FixedState = { MarkupHandling = MarkupMode.Allow },
-                BatchFixedState = { MarkupHandling = MarkupMode.Allow },
-
-                // The first iteration fully renders the documentation. The second iteration offers a code fix to render
-                // documentation, but no changes are made by the fix so the iterations stop.
-                NumberOfIncrementalIterations = 2,
-            }.RunAsync();
+            await VerifyCodeFixAsync(testCode, fixedCode);
         }
 
         [Fact]
@@ -110,17 +91,7 @@ class TestClass { }
 class TestClass { }
 ";
 
-            await new CSharpCodeFixTest<DOC900RenderAsMarkdown, DOC900CodeFixProvider, XUnitVerifier>
-            {
-                TestCode = testCode,
-                FixedCode = fixedCode,
-                FixedState = { MarkupHandling = MarkupMode.Allow },
-                BatchFixedState = { MarkupHandling = MarkupMode.Allow },
-
-                // The first iteration fully renders the documentation. The second iteration offers a code fix to render
-                // documentation, but no changes are made by the fix so the iterations stop.
-                NumberOfIncrementalIterations = 2,
-            }.RunAsync();
+            await VerifyCodeFixAsync(testCode, fixedCode);
         }
 
         [Fact]
@@ -152,17 +123,7 @@ class TestClass { }
 class TestClass { }
 ";
 
-            await new CSharpCodeFixTest<DOC900RenderAsMarkdown, DOC900CodeFixProvider, XUnitVerifier>
-            {
-                TestCode = testCode,
-                FixedCode = fixedCode,
-                FixedState = { MarkupHandling = MarkupMode.Allow },
-                BatchFixedState = { MarkupHandling = MarkupMode.Allow },
-
-                // The first iteration fully renders the documentation. The second iteration offers a code fix to render
-                // documentation, but no changes are made by the fix so the iterations stop.
-                NumberOfIncrementalIterations = 2,
-            }.RunAsync();
+            await VerifyCodeFixAsync(testCode, fixedCode);
         }
 
         [Fact]
@@ -185,17 +146,7 @@ class TestClass {
 }
 ";
 
-            await new CSharpCodeFixTest<DOC900RenderAsMarkdown, DOC900CodeFixProvider, XUnitVerifier>
-            {
-                TestCode = testCode,
-                FixedCode = fixedCode,
-                FixedState = { MarkupHandling = MarkupMode.Allow },
-                BatchFixedState = { MarkupHandling = MarkupMode.Allow },
-
-                // The first iteration fully renders the documentation. The second iteration offers a code fix to render
-                // documentation, but no changes are made by the fix so the iterations stop.
-                NumberOfIncrementalIterations = 2,
-            }.RunAsync();
+            await VerifyCodeFixAsync(testCode, fixedCode);
         }
 
         [Fact]
@@ -224,6 +175,11 @@ class TestClass<T> {
 }
 ";
 
+            await VerifyCodeFixAsync(testCode, fixedCode);
+        }
+
+        private static async Task VerifyCodeFixAsync(string testCode, string fixedCode)
+        {
             await new CSharpCodeFixTest<DOC900RenderAsMarkdown, DOC900CodeFixProvider, XUnitVerifier>
             {
                 TestCode = testCode,
@@ -231,9 +187,9 @@ class TestClass<T> {
                 FixedState = { MarkupHandling = MarkupMode.Allow },
                 BatchFixedState = { MarkupHandling = MarkupMode.Allow },
 
-                // The first iteration fully renders the documentation. The second iteration offers a code fix to render
-                // documentation, but no changes are made by the fix so the iterations stop.
-                NumberOfIncrementalIterations = 3,
+                // One iteration per documentation comment fully renders the documentation. An addition iteration offers
+                // a code fix to render documentation, but no changes are made by the fix so the iterations stop.
+                NumberOfIncrementalIterations = testCode.Split(new[] { "$$" }, StringSplitOptions.None).Length,
             }.RunAsync();
         }
     }
