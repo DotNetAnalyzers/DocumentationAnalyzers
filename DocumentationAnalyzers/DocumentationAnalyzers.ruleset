@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RuleSet Name="Rules for DocumentationAnalyzers" Description="Code analysis rules for DocumentationAnalyzers.csproj." ToolsVersion="14.0">
   <Rules AnalyzerId="AsyncUsageAnalyzers" RuleNamespace="AsyncUsageAnalyzers">
-    <Rule Id="UseConfigureAwait" Action="Warning" />
+    <Rule Id="UseConfigureAwait" Action="None" />
   </Rules>
   <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
     <Rule Id="CA1001" Action="Warning" />
@@ -68,7 +68,8 @@
     <Rule Id="CA2242" Action="Warning" />
   </Rules>
   <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp.Analyzers" RuleNamespace="Microsoft.CodeAnalysis.CSharp.Analyzers">
-    <Rule Id="RS1022" Action="None" /> <!-- https://github.com/dotnet/roslyn-analyzers/issues/1803 -->
+    <Rule Id="RS1022" Action="None" />
+    <!-- https://github.com/dotnet/roslyn-analyzers/issues/1803 -->
   </Rules>
   <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp.Features" RuleNamespace="Microsoft.CodeAnalysis.CSharp.Features">
     <Rule Id="IDE0003" Action="None" />
