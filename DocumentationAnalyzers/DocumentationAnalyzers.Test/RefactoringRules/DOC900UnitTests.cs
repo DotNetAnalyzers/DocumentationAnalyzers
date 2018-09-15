@@ -39,6 +39,53 @@ class TestClass { }
         }
 
         [Fact]
+        public async Task TestSingleParagraphSummaryAsync()
+        {
+            var testCode = @"
+///$$ <summary>
+/// Para 1
+/// </summary>
+class TestClass { }
+";
+            var fixedCode = testCode;
+
+            await VerifyCodeFixAsync(testCode, fixedCode);
+        }
+
+        [Fact]
+        public async Task TestSingleParagraphRemarksAsync()
+        {
+            var testCode = @"
+///$$ <remarks>
+/// Para 1
+/// </remarks>
+class TestClass { }
+";
+            var fixedCode = @"
+///$$ <remarks>
+/// <para>Para 1</para>
+/// </remarks>
+class TestClass { }
+";
+
+            await VerifyCodeFixAsync(testCode, fixedCode);
+        }
+
+        [Fact]
+        public async Task TestParamElementNotRenderedAsync()
+        {
+            var testCode = @"
+class TestClass {
+    ///$$ <param name=""param"">Provide a value for `param`.</param>
+    void Method(int param) { }
+}
+";
+            var fixedCode = testCode;
+
+            await VerifyCodeFixAsync(testCode, fixedCode);
+        }
+
+        [Fact]
         public async Task TestBulletedListAsync()
         {
             var testCode = @"
@@ -180,16 +227,25 @@ class TestClass<T> {
 
         private static async Task VerifyCodeFixAsync(string testCode, string fixedCode)
         {
+            int iterations;
+            if (testCode == fixedCode)
+            {
+                iterations = 1;
+            }
+            else
+            {
+                // One iteration per documentation comment fully renders the documentation. An addition iteration offers
+                // a code fix to render documentation, but no changes are made by the fix so the iterations stop.
+                iterations = testCode.Split(new[] { "$$" }, StringSplitOptions.None).Length;
+            }
+
             await new CSharpCodeFixTest<DOC900RenderAsMarkdown, DOC900CodeFixProvider, XUnitVerifier>
             {
                 TestCode = testCode,
                 FixedCode = fixedCode,
                 FixedState = { MarkupHandling = MarkupMode.Allow },
                 BatchFixedState = { MarkupHandling = MarkupMode.Allow },
-
-                // One iteration per documentation comment fully renders the documentation. An addition iteration offers
-                // a code fix to render documentation, but no changes are made by the fix so the iterations stop.
-                NumberOfIncrementalIterations = testCode.Split(new[] { "$$" }, StringSplitOptions.None).Length,
+                NumberOfIncrementalIterations = iterations,
             }.RunAsync();
         }
     }
