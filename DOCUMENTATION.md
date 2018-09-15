@@ -2,4 +2,8 @@ DocumentationAnalyzers provides warnings that indicate documentation rule violat
 
 ### Rule areas
 
+**[Style Rules (DOC100-)](docs/StyleRules.md)**
+
+Rules related to the style of documentation comments.
+
 ### Additional documentation

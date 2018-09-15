@@ -8,5 +8,9 @@ namespace DocumentationAnalyzers
     /// </summary>
     internal static class AnalyzerCategory
     {
+        /// <summary>
+        /// Category definition for style rules.
+        /// </summary>
+        public const string StyleRules = nameof(DocumentationAnalyzers) + "." + nameof(StyleRules);
     }
 }

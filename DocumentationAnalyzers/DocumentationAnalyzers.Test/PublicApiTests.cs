@@ -5,6 +5,7 @@ namespace DocumentationAnalyzers.Test
 {
     using System;
     using System.Text;
+    using DocumentationAnalyzers.Helpers;
     using Xunit;
 
     /// <summary>
@@ -16,10 +17,30 @@ namespace DocumentationAnalyzers.Test
         /// This test ensures all types in DocumentationAnalyzers.dll are marked internal.
         /// </summary>
         [Fact]
-        public void TestAllTypesAreInternal()
+        public void TestAllAnalyzerTypesAreInternal()
         {
-            StringBuilder publicTypes = new StringBuilder();
+            var publicTypes = new StringBuilder();
             foreach (Type type in typeof(AnalyzerCategory).Assembly.ExportedTypes)
+            {
+                if (publicTypes.Length > 0)
+                {
+                    publicTypes.Append(", ");
+                }
+
+                publicTypes.Append(type.Name);
+            }
+
+            Assert.Equal(string.Empty, publicTypes.ToString());
+        }
+
+        /// <summary>
+        /// This test ensures all types in DocumentationAnalyzers.CodeFixes.dll are marked internal.
+        /// </summary>
+        [Fact]
+        public void TestAllCodeFixTypesAreInternal()
+        {
+            var publicTypes = new StringBuilder();
+            foreach (Type type in typeof(CustomBatchFixAllProvider).Assembly.ExportedTypes)
             {
                 if (publicTypes.Length > 0)
                 {
