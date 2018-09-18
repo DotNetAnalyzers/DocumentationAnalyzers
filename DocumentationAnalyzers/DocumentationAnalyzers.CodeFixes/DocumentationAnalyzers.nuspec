@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0"?>
 <package>
   <metadata minClientVersion="2.7">
-    <id>DocumentationAnalyzers</id>
+    <id>DotNetAnalyzers.DocumentationAnalyzers</id>
     <version>0.0.0</version>
-    <title>DocumentationAnalyzers</title>
+    <title>DotNetAnalyzers.DocumentationAnalyzers</title>
     <authors>Sam Harwell et. al.</authors>
     <owners>Sam Harwell</owners>
     <licenseUrl>https://raw.githubusercontent.com/DotNetAnalyzers/DocumentationAnalyzers/$version$/LICENSE</licenseUrl>
