@@ -7,7 +7,8 @@
     <RootNamespace>DocumentationAnalyzers</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IncludeSymbols>true</IncludeSymbols>
-    <NuspecFile>DocumentationAnalyzers.nuspec</NuspecFile>
+    <NuspecFile Condition="'$(MetadataPackage)' != 'true'">DocumentationAnalyzers.nuspec</NuspecFile>
+    <NuspecFile Condition="'$(MetadataPackage)' == 'true'">DocumentationAnalyzers.Metadata.nuspec</NuspecFile>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -49,7 +50,32 @@
 
   <Target Name="SetNuspecProperties" AfterTargets="GetBuildVersion">
     <PropertyGroup>
-      <NuspecProperties>configuration=$(Configuration);version=$(PackageVersion)</NuspecProperties>
+      <BaseNuspecId>DotNetAnalyzers.DocumentationAnalyzers</BaseNuspecId>
+      <ImplementationNuspecId>$(BaseNuspecId)</ImplementationNuspecId>
+      <MetadataNuspecId>$(BaseNuspecId)</MetadataNuspecId>
+
+      <ImplementationNuspecId Condition="'$(PrereleaseVersion)' != ''">$(BaseNuspecId).Unstable</ImplementationNuspecId>
+      <MetadataNuspecId Condition="'$(PrereleaseVersion)' == ''">$(BaseNuspecId).Unstable</MetadataNuspecId>
+
+      <NuspecId Condition="'$(MetadataPackage)' != 'true'">$(ImplementationNuspecId)</NuspecId>
+      <NuspecId Condition="'$(MetadataPackage)' == 'true'">$(MetadataNuspecId)</NuspecId>
+
+      <NuspecUnstableVersion>$(AssemblyVersion)</NuspecUnstableVersion>
+      <NuspecStableVersion>$(PackageVersion)</NuspecStableVersion>
+
+      <NuspecVersion Condition="'$(MetadataPackage)' != 'true'">$(NuspecUnstableVersion)</NuspecVersion>
+      <NuspecVersion Condition="'$(MetadataPackage)' == 'true'">$(NuspecStableVersion)</NuspecVersion>
+
+      <ImplementationNuspecVersion Condition="'$(PrereleaseVersion)' != ''">$(NuspecUnstableVersion)</ImplementationNuspecVersion>
+      <ImplementationNuspecVersion Condition="'$(PrereleaseVersion)' == ''">$(NuspecStableVersion)</ImplementationNuspecVersion>
+
+      <NuspecProperties>id=$(NuspecId);configuration=$(Configuration);version=$(NuspecVersion);implId=$(ImplementationNuspecId);implVersion=$(ImplementationNuspecVersion)</NuspecProperties>
     </PropertyGroup>
+  </Target>
+
+  <Target Name="PackMetadata" AfterTargets="Pack" Condition="'$(MetadataPackage)' != 'true'">
+    <MSBuild Projects="$(MSBuildProjectFullPath)"
+             Targets="Pack"
+             Properties="MetadataPackage=true;IncludeSymbols=false" />
   </Target>
 </Project>
