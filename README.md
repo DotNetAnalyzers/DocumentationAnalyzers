@@ -1,6 +1,6 @@
 # Documentation Analyzers for the .NET Compiler Platform
 
-[![NuGet](https://img.shields.io/nuget/v/DocumentationAnalyzers.svg)](https://www.nuget.org/packages/DocumentationAnalyzers)[![NuGet Beta](https://img.shields.io/nuget/vpre/DocumentationAnalyzers.svg)](https://www.nuget.org/packages/DocumentationAnalyzers)
+[![NuGet](https://img.shields.io/nuget/v/DotNetAnalyzers.DocumentationAnalyzers.svg)](https://www.nuget.org/packages/DotNetAnalyzers.DocumentationAnalyzers) [![NuGet Beta](https://img.shields.io/nuget/vpre/DotNetAnalyzers.DocumentationAnalyzers.svg)](https://www.nuget.org/packages/DotNetAnalyzers.DocumentationAnalyzers)
 
 [![Join the chat at https://gitter.im/DotNetAnalyzers/DocumentationAnalyzers](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/DotNetAnalyzers/DocumentationAnalyzers?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 

@@ -61,10 +61,13 @@
       <NuspecId Condition="'$(MetadataPackage)' == 'true'">$(MetadataNuspecId)</NuspecId>
 
       <NuspecUnstableVersion>$(AssemblyVersion)</NuspecUnstableVersion>
+      <NuspecUnstableVersion Condition="'$(PublicRelease)' != 'true'">$(NuspecUnstableVersion)-g$(GitCommitIdShort)</NuspecUnstableVersion>
       <NuspecStableVersion>$(PackageVersion)</NuspecStableVersion>
 
-      <NuspecVersion Condition="'$(MetadataPackage)' != 'true'">$(NuspecUnstableVersion)</NuspecVersion>
-      <NuspecVersion Condition="'$(MetadataPackage)' == 'true'">$(NuspecStableVersion)</NuspecVersion>
+      <UnstablePackage Condition="('$(PrereleaseVersion)' != '' AND '$(MetadataPackage)' != 'true') OR ('$(PrereleaseVersion)' == '' AND '$(MetadataPackage)' == 'true')">true</UnstablePackage>
+
+      <NuspecVersion Condition="'$(UnstablePackage)' != 'true'">$(NuspecStableVersion)</NuspecVersion>
+      <NuspecVersion Condition="'$(UnstablePackage)' == 'true'">$(NuspecUnstableVersion)</NuspecVersion>
 
       <ImplementationNuspecVersion Condition="'$(PrereleaseVersion)' != ''">$(NuspecUnstableVersion)</ImplementationNuspecVersion>
       <ImplementationNuspecVersion Condition="'$(PrereleaseVersion)' == ''">$(NuspecStableVersion)</ImplementationNuspecVersion>
