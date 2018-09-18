@@ -16,7 +16,10 @@ test_script:
     if ($env:Configuration -eq 'Debug') {
       .\opencover-report.ps1 -Debug -NoBuild -NoReport -AppVeyor
       if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode) }
-      ..\packages\Codecov.1.0.1\tools\codecov.exe -f '..\build\OpenCover.Reports\OpenCover.DocumentationAnalyzers.xml'
+      $packageConfig = [xml](Get-Content ..\.nuget\packages.config)
+      $codecov_version = $packageConfig.SelectSingleNode('/packages/package[@id="Codecov"]').version
+      $codecov = "..\packages\Codecov.$codecov_version\tools\codecov.exe"
+      &$codecov -f '..\build\OpenCover.Reports\OpenCover.DocumentationAnalyzers.xml'
     } else {
       .\opencover-report.ps1 -NoBuild -NoReport -AppVeyor
       if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode) }
