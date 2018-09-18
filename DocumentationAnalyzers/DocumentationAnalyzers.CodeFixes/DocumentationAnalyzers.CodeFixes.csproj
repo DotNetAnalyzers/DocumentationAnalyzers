@@ -61,6 +61,7 @@
       <NuspecId Condition="'$(MetadataPackage)' == 'true'">$(MetadataNuspecId)</NuspecId>
 
       <NuspecUnstableVersion>$(AssemblyVersion)</NuspecUnstableVersion>
+      <NuspecUnstableVersion Condition="'$(PublicRelease)' != 'true'">$(NuspecUnstableVersion)-g$(GitCommitIdShort)</NuspecUnstableVersion>
       <NuspecStableVersion>$(PackageVersion)</NuspecStableVersion>
 
       <UnstablePackage Condition="('$(PrereleaseVersion)' != '' AND '$(MetadataPackage)' != 'true') OR ('$(PrereleaseVersion)' == '' AND '$(MetadataPackage)' == 'true')">true</UnstablePackage>
