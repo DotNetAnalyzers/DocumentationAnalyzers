@@ -6,6 +6,10 @@ DocumentationAnalyzers provides warnings that indicate documentation rule violat
 
 Rules related to the style of documentation comments.
 
+**[Portability Rules (DOC200-)](docs/PortabilityRules.md)**
+
+Rules related to the portability of documentation comments.
+
 **[Refactorings (DOC900-)](docs/Refactorings.md)**
 
 Additional refactorings provided when the analyzer is installed.

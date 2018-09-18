@@ -1,17 +1,17 @@
 ﻿// Copyright (c) Tunnel Vision Laboratories, LLC. All Rights Reserved.
 // Licensed under the MIT license. See LICENSE in the project root for license information.
 
-namespace DocumentationAnalyzers.Test.StyleRules
+namespace DocumentationAnalyzers.Test.PortabilityRules
 {
     using System.Threading.Tasks;
-    using DocumentationAnalyzers.StyleRules;
+    using DocumentationAnalyzers.PortabilityRules;
     using Xunit;
-    using Verify = Microsoft.CodeAnalysis.CSharp.Testing.CSharpCodeFixVerifier<DocumentationAnalyzers.StyleRules.DOC103UseXmlDocumentationSyntax, DocumentationAnalyzers.StyleRules.DOC103CodeFixProvider, Microsoft.CodeAnalysis.Testing.Verifiers.XUnitVerifier>;
+    using Verify = Microsoft.CodeAnalysis.CSharp.Testing.CSharpCodeFixVerifier<DocumentationAnalyzers.PortabilityRules.DOC200UseXmlDocumentationSyntax, DocumentationAnalyzers.PortabilityRules.DOC200CodeFixProvider, Microsoft.CodeAnalysis.Testing.Verifiers.XUnitVerifier>;
 
     /// <summary>
-    /// This class contains unit tests for <see cref="DOC103UseXmlDocumentationSyntax"/>.
+    /// This class contains unit tests for <see cref="DOC200UseXmlDocumentationSyntax"/>.
     /// </summary>
-    public class DOC103UnitTests
+    public class DOC200UnitTests
     {
         [Fact]
         public async Task TestHtmlParagraphAsync()

@@ -117,34 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BlockLevelDocumentationCodeFix" xml:space="preserve">
-    <value>Insert paragraph element</value>
+  <data name="DOC200CodeFix" xml:space="preserve">
+    <value>Use XML documentation syntax</value>
   </data>
-  <data name="DOC100Description" xml:space="preserve">
-    <value>The documentation for the element contains text which is not placed in paragraphs.</value>
+  <data name="DOC200Description" xml:space="preserve">
+    <value>Use XML documentation syntax</value>
   </data>
-  <data name="DOC100MessageFormat" xml:space="preserve">
-    <value>Place text in paragraphs</value>
+  <data name="DOC200MessageFormat" xml:space="preserve">
+    <value>Use XML documentation syntax</value>
   </data>
-  <data name="DOC100Title" xml:space="preserve">
-    <value>Place text in paragraphs</value>
-  </data>
-  <data name="DOC101Description" xml:space="preserve">
-    <value>The documentation for the element contains some text which is wrapped in block-level elements, and other text which is written inline.</value>
-  </data>
-  <data name="DOC101MessageFormat" xml:space="preserve">
-    <value>Use child blocks consistently</value>
-  </data>
-  <data name="DOC101Title" xml:space="preserve">
-    <value>Use child blocks consistently</value>
-  </data>
-  <data name="DOC102Description" xml:space="preserve">
-    <value>The documentation for the element contains inline text, but the documentation for a sibling element of the same kind uses block-level elements.</value>
-  </data>
-  <data name="DOC102MessageFormat" xml:space="preserve">
-    <value>Use child blocks consistently across elements of the same kind</value>
-  </data>
-  <data name="DOC102Title" xml:space="preserve">
-    <value>Use child blocks consistently across elements of the same kind</value>
+  <data name="DOC200Title" xml:space="preserve">
+    <value>Use XML documentation syntax</value>
   </data>
 </root>

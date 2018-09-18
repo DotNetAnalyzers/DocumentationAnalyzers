@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Tunnel Vision Laboratories, LLC. All Rights Reserved.
 // Licensed under the MIT license. See LICENSE in the project root for license information.
 
-namespace DocumentationAnalyzers.StyleRules
+namespace DocumentationAnalyzers.PortabilityRules
 {
     using System.Collections.Immutable;
     using System.Composition;
@@ -14,12 +14,12 @@ namespace DocumentationAnalyzers.StyleRules
     using Microsoft.CodeAnalysis.CSharp;
     using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-    [ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(DOC103CodeFixProvider))]
+    [ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(DOC200CodeFixProvider))]
     [Shared]
-    internal class DOC103CodeFixProvider : CodeFixProvider
+    internal class DOC200CodeFixProvider : CodeFixProvider
     {
         public override ImmutableArray<string> FixableDiagnosticIds { get; }
-            = ImmutableArray.Create(DOC103UseXmlDocumentationSyntax.DiagnosticId);
+            = ImmutableArray.Create(DOC200UseXmlDocumentationSyntax.DiagnosticId);
 
         public override FixAllProvider GetFixAllProvider()
             => CustomFixAllProviders.BatchFixer;
@@ -35,9 +35,9 @@ namespace DocumentationAnalyzers.StyleRules
 
                 context.RegisterCodeFix(
                     CodeAction.Create(
-                        StyleResources.DOC103CodeFix,
+                        PortabilityResources.DOC200CodeFix,
                         token => GetTransformedDocumentAsync(context.Document, diagnostic, token),
-                        nameof(DOC103CodeFixProvider)),
+                        nameof(DOC200CodeFixProvider)),
                     diagnostic);
             }
 

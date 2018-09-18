@@ -1,11 +1,11 @@
 ﻿// Copyright (c) Tunnel Vision Laboratories, LLC. All Rights Reserved.
 // Licensed under the MIT license. See LICENSE in the project root for license information.
 
-namespace DocumentationAnalyzers.Test.CSharp7.StyleRules
+namespace DocumentationAnalyzers.Test.CSharp7.PortabilityRules
 {
-    using DocumentationAnalyzers.Test.StyleRules;
+    using DocumentationAnalyzers.Test.PortabilityRules;
 
-    public class DOC103CSharp7UnitTests : DOC103UnitTests
+    public class DOC200CSharp7UnitTests : DOC200UnitTests
     {
     }
 }

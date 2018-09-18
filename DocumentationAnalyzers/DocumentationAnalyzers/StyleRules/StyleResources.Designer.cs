@@ -150,41 +150,5 @@ namespace DocumentationAnalyzers.StyleRules {
                 return ResourceManager.GetString("DOC102Title", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Use XML documentation syntax.
-        /// </summary>
-        internal static string DOC103CodeFix {
-            get {
-                return ResourceManager.GetString("DOC103CodeFix", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Use XML documentation syntax.
-        /// </summary>
-        internal static string DOC103Description {
-            get {
-                return ResourceManager.GetString("DOC103Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Use XML documentation syntax.
-        /// </summary>
-        internal static string DOC103MessageFormat {
-            get {
-                return ResourceManager.GetString("DOC103MessageFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Use XML documentation syntax.
-        /// </summary>
-        internal static string DOC103Title {
-            get {
-                return ResourceManager.GetString("DOC103Title", resourceCulture);
-            }
-        }
     }
 }

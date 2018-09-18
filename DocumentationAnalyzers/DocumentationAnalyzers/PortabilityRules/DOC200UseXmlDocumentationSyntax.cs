@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Tunnel Vision Laboratories, LLC. All Rights Reserved.
 // Licensed under the MIT license. See LICENSE in the project root for license information.
 
-namespace DocumentationAnalyzers.StyleRules
+namespace DocumentationAnalyzers.PortabilityRules
 {
     using System.Collections.Immutable;
     using Microsoft.CodeAnalysis;
@@ -13,20 +13,20 @@ namespace DocumentationAnalyzers.StyleRules
     /// Use XML documentation syntax.
     /// </summary>
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
-    internal class DOC103UseXmlDocumentationSyntax : DiagnosticAnalyzer
+    internal class DOC200UseXmlDocumentationSyntax : DiagnosticAnalyzer
     {
         /// <summary>
-        /// The ID for diagnostics produced by the <see cref="DOC103UseXmlDocumentationSyntax"/> analyzer.
+        /// The ID for diagnostics produced by the <see cref="DOC200UseXmlDocumentationSyntax"/> analyzer.
         /// </summary>
-        public const string DiagnosticId = "DOC103";
-        private const string HelpLink = "https://github.com/DotNetAnalyzers/DocumentationAnalyzers/blob/master/docs/DOC103.md";
+        public const string DiagnosticId = "DOC200";
+        private const string HelpLink = "https://github.com/DotNetAnalyzers/DocumentationAnalyzers/blob/master/docs/DOC200.md";
 
-        private static readonly LocalizableString Title = new LocalizableResourceString(nameof(StyleResources.DOC103Title), StyleResources.ResourceManager, typeof(StyleResources));
-        private static readonly LocalizableString MessageFormat = new LocalizableResourceString(nameof(StyleResources.DOC103MessageFormat), StyleResources.ResourceManager, typeof(StyleResources));
-        private static readonly LocalizableString Description = new LocalizableResourceString(nameof(StyleResources.DOC103Description), StyleResources.ResourceManager, typeof(StyleResources));
+        private static readonly LocalizableString Title = new LocalizableResourceString(nameof(PortabilityResources.DOC200Title), PortabilityResources.ResourceManager, typeof(PortabilityResources));
+        private static readonly LocalizableString MessageFormat = new LocalizableResourceString(nameof(PortabilityResources.DOC200MessageFormat), PortabilityResources.ResourceManager, typeof(PortabilityResources));
+        private static readonly LocalizableString Description = new LocalizableResourceString(nameof(PortabilityResources.DOC200Description), PortabilityResources.ResourceManager, typeof(PortabilityResources));
 
         private static readonly DiagnosticDescriptor Descriptor =
-            new DiagnosticDescriptor(DiagnosticId, Title, MessageFormat, AnalyzerCategory.StyleRules, DiagnosticSeverity.Info, AnalyzerConstants.EnabledByDefault, Description, HelpLink);
+            new DiagnosticDescriptor(DiagnosticId, Title, MessageFormat, AnalyzerCategory.PortabilityRules, DiagnosticSeverity.Info, AnalyzerConstants.EnabledByDefault, Description, HelpLink);
 
         /// <inheritdoc/>
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; }
