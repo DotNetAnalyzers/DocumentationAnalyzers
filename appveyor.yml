@@ -2,6 +2,9 @@ version: '{build}'
 image: Visual Studio 2017
 init:
 - git config --global core.autocrlf true
+configuration:
+- Debug
+- Release
 before_build:
 - nuget restore
 build:
@@ -9,14 +12,26 @@ build:
   verbosity: minimal
 test_script:
 - cd build
-- ps: .\opencover-report.ps1 -Debug -NoBuild -NoReport -AppVeyor
+- ps: |
+    if ($env:Configuration -eq 'Debug') {
+      .\opencover-report.ps1 -Debug -NoBuild -NoReport -AppVeyor
+      if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode) }
+      $packageConfig = [xml](Get-Content ..\.nuget\packages.config)
+      $codecov_version = $packageConfig.SelectSingleNode('/packages/package[@id="Codecov"]').version
+      $codecov = "..\packages\Codecov.$codecov_version\tools\codecov.exe"
+      &$codecov -f '..\build\OpenCover.Reports\OpenCover.DocumentationAnalyzers.xml'
+    } else {
+      .\opencover-report.ps1 -NoBuild -NoReport -AppVeyor
+      if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode) }
+    }
 - cd ..
-- .\packages\Codecov.1.0.1\tools\codecov.exe -f ".\build\OpenCover.Reports\OpenCover.DocumentationAnalyzers.xml"
-- .\DocumentationAnalyzers\DocumentationAnalyzers.Status.Generator\bin\Debug\net46\DocumentationAnalyzers.Status.Generator.exe .\DocumentationAnalyzers.sln > DocumentationAnalyzers.Status.json
+- .\DocumentationAnalyzers\DocumentationAnalyzers.Status.Generator\bin\%Configuration%\net46\DocumentationAnalyzers.Status.Generator.exe .\DocumentationAnalyzers.sln > DocumentationAnalyzers.Status.json
 cache:
   - packages -> **\packages.config
   - C:\Users\appveyor\.nuget\packages -> appveyor.yml
+
+# 'Release' is hard-coded to ensure VSIX and NuGet artifacts are only published for release configuration builds
 artifacts:
-- path: 'DocumentationAnalyzers\**\*.vsix'
-- path: 'DocumentationAnalyzers\**\*.nupkg'
+- path: 'DocumentationAnalyzers\DocumentationAnalyzers.Vsix\bin\Release\net452\*.vsix'
+- path: 'DocumentationAnalyzers\DocumentationAnalyzers.CodeFixes\bin\Release\*.nupkg'
 - path: 'DocumentationAnalyzers.Status.json'
