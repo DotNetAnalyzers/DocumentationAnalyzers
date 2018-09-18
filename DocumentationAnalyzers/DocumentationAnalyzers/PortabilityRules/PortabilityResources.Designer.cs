@@ -96,5 +96,41 @@ namespace DocumentationAnalyzers.PortabilityRules {
                 return ResourceManager.GetString("DOC200Title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item should have description.
+        /// </summary>
+        internal static string DOC201CodeFix {
+            get {
+                return ResourceManager.GetString("DOC201CodeFix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item should have description.
+        /// </summary>
+        internal static string DOC201Description {
+            get {
+                return ResourceManager.GetString("DOC201Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item should have description.
+        /// </summary>
+        internal static string DOC201MessageFormat {
+            get {
+                return ResourceManager.GetString("DOC201MessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item should have description.
+        /// </summary>
+        internal static string DOC201Title {
+            get {
+                return ResourceManager.GetString("DOC201Title", resourceCulture);
+            }
+        }
     }
 }

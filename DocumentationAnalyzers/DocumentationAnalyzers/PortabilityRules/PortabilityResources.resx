@@ -129,4 +129,16 @@
   <data name="DOC200Title" xml:space="preserve">
     <value>Use XML documentation syntax</value>
   </data>
+  <data name="DOC201CodeFix" xml:space="preserve">
+    <value>Item should have description</value>
+  </data>
+  <data name="DOC201Description" xml:space="preserve">
+    <value>Item should have description</value>
+  </data>
+  <data name="DOC201MessageFormat" xml:space="preserve">
+    <value>Item should have description</value>
+  </data>
+  <data name="DOC201Title" xml:space="preserve">
+    <value>Item should have description</value>
+  </data>
 </root>
