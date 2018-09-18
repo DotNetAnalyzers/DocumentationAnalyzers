@@ -43,7 +43,7 @@ namespace DocumentationAnalyzers.Helpers
                 switch (currentSymbol.Kind)
                 {
                 case SymbolKind.NamedType:
-                    if (((INamedTypeSymbol)symbol).TypeParameters.Any(parameter => comparer.Equals(parameter.Name, name)))
+                    if (((INamedTypeSymbol)currentSymbol).TypeParameters.Any(parameter => comparer.Equals(parameter.Name, name)))
                     {
                         return true;
                     }
@@ -51,7 +51,7 @@ namespace DocumentationAnalyzers.Helpers
                     break;
 
                 case SymbolKind.Method:
-                    if (((IMethodSymbol)symbol).TypeParameters.Any(parameter => comparer.Equals(parameter.Name, name)))
+                    if (((IMethodSymbol)currentSymbol).TypeParameters.Any(parameter => comparer.Equals(parameter.Name, name)))
                     {
                         return true;
                     }
