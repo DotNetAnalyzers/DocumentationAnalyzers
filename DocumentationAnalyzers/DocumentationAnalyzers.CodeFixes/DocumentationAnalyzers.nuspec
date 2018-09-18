@@ -17,6 +17,10 @@
   </metadata>
   <files>
 
+    <!-- Additional Files -->
+    <file src="..\..\LICENSE" />
+    <file src="..\..\THIRD-PARTY-NOTICES.txt" />
+
     <!-- Binaries and symbols -->
     <file src="bin\$Configuration$\netstandard1.1\DocumentationAnalyzers.dll" target="analyzers\dotnet\cs" />
     <file src="bin\$Configuration$\netstandard1.1\**\DocumentationAnalyzers.resources.dll" target="analyzers\dotnet\cs" />
