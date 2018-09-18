@@ -50,7 +50,7 @@ namespace DocumentationAnalyzers.StyleRules
                 context.RegisterCodeFix(CodeAction.Create(StyleResources.BlockLevelDocumentationCodeFix, token => GetTransformedDocumentAsync(context.Document, diagnostic, token), nameof(BlockLevelDocumentationCodeFixProvider)), diagnostic);
             }
 
-            return Task.FromResult(true);
+            return SpecializedTasks.CompletedTask;
         }
 
         private static async Task<Document> GetTransformedDocumentAsync(Document document, Diagnostic diagnostic, CancellationToken cancellationToken)
