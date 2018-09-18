@@ -19,9 +19,8 @@ namespace DocumentationAnalyzers.Helpers
         /// context of the specified <paramref name="symbol"/>; otherwise, <see langword="false"/>.</returns>
         public static bool HasAnyParameter(this ISymbol symbol, string name, StringComparer comparer)
         {
-            if (symbol.Kind == SymbolKind.Method)
+            if (symbol is IMethodSymbol methodSymbol)
             {
-                var methodSymbol = (IMethodSymbol)symbol;
                 return methodSymbol.Parameters.Any(parameter => comparer.Equals(parameter.Name, name));
             }
 
@@ -40,18 +39,18 @@ namespace DocumentationAnalyzers.Helpers
         {
             for (var currentSymbol = symbol; currentSymbol != null; currentSymbol = currentSymbol.ContainingSymbol)
             {
-                switch (currentSymbol.Kind)
+                switch (currentSymbol)
                 {
-                case SymbolKind.NamedType:
-                    if (((INamedTypeSymbol)currentSymbol).TypeParameters.Any(parameter => comparer.Equals(parameter.Name, name)))
+                case INamedTypeSymbol namedType:
+                    if (namedType.TypeParameters.Any(parameter => comparer.Equals(parameter.Name, name)))
                     {
                         return true;
                     }
 
                     break;
 
-                case SymbolKind.Method:
-                    if (((IMethodSymbol)currentSymbol).TypeParameters.Any(parameter => comparer.Equals(parameter.Name, name)))
+                case IMethodSymbol method:
+                    if (method.TypeParameters.Any(parameter => comparer.Equals(parameter.Name, name)))
                     {
                         return true;
                     }
