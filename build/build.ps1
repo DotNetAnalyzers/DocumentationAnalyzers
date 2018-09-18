@@ -16,8 +16,6 @@ if (!(Test-Path $SolutionPath)) {
 	exit 1
 }
 
-. .\version.ps1
-
 If ($Debug) {
 	$BuildConfig = 'Debug'
 } Else {
@@ -108,10 +106,3 @@ if (-not $SkipKeyCheck) {
 		}
 	}
 }
-
-if (-not (Test-Path 'nuget')) {
-	mkdir "nuget"
-}
-
-Copy-Item "..\DocumentationAnalyzers\DocumentationAnalyzers.CodeFixes\bin\$BuildConfig\DocumentationAnalyzers.$Version.nupkg" 'nuget'
-Copy-Item "..\DocumentationAnalyzers\DocumentationAnalyzers.CodeFixes\bin\$BuildConfig\DocumentationAnalyzers.$Version.symbols.nupkg" 'nuget'

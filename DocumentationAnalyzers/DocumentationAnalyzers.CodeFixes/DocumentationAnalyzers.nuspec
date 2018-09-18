@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0"?>
 <package>
   <metadata minClientVersion="2.7">
-    <id>DotNetAnalyzers.DocumentationAnalyzers</id>
+    <id>$id$</id>
     <version>0.0.0</version>
-    <title>DotNetAnalyzers.DocumentationAnalyzers</title>
+    <title>$id$</title>
     <authors>Sam Harwell et. al.</authors>
     <owners>Sam Harwell</owners>
-    <licenseUrl>https://raw.githubusercontent.com/DotNetAnalyzers/DocumentationAnalyzers/$version$/LICENSE</licenseUrl>
+    <licenseUrl>https://raw.githubusercontent.com/DotNetAnalyzers/DocumentationAnalyzers/$GitCommitIdShort$/LICENSE</licenseUrl>
     <projectUrl>https://github.com/DotNetAnalyzers/DocumentationAnalyzers</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>An implementation of .NET documentation rules using Roslyn analyzers and code fixes</description>
@@ -16,6 +16,10 @@
     <developmentDependency>true</developmentDependency>
   </metadata>
   <files>
+
+    <!-- Additional Files -->
+    <file src="..\..\LICENSE" />
+    <file src="..\..\THIRD-PARTY-NOTICES.txt" />
 
     <!-- Binaries and symbols -->
     <file src="bin\$Configuration$\netstandard1.1\DocumentationAnalyzers.dll" target="analyzers\dotnet\cs" />
