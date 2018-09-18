@@ -234,7 +234,7 @@ class TestClass {
     ///$$ <summary>
     /// Provide a `value`.
     /// </summary>
-    int Method => 3;
+    int Property => 3;
 }
 ";
             var fixedCode = @"
@@ -242,7 +242,7 @@ class TestClass {
     ///$$ <summary>
     /// Provide a <c>value</c>.
     /// </summary>
-    int Method => 3;
+    int Property => 3;
 }
 ";
 
