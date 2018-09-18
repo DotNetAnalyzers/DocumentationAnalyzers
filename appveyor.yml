@@ -29,7 +29,9 @@ test_script:
 cache:
   - packages -> **\packages.config
   - C:\Users\appveyor\.nuget\packages -> appveyor.yml
+
+# 'Release' is hard-coded to ensure VSIX and NuGet artifacts are only published for release configuration builds
 artifacts:
-- path: 'DocumentationAnalyzers\**\*.vsix'
-- path: 'DocumentationAnalyzers\**\*.nupkg'
+- path: 'DocumentationAnalyzers\DocumentationAnalyzers.Vsix\bin\Release\net452\*.vsix'
+- path: 'DocumentationAnalyzers\DocumentationAnalyzers.CodeFixes\bin\Release\*.nupkg'
 - path: 'DocumentationAnalyzers.Status.json'
