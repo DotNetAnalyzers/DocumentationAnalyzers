@@ -24,6 +24,9 @@ namespace DocumentationAnalyzers.Helpers
         internal const string SeeXmlTag = "see";
         internal const string CodeXmlTag = "code";
         internal const string ListXmlTag = "list";
+        internal const string ItemXmlTag = "item";
+        internal const string TermXmlTag = "term";
+        internal const string DescriptionXmlTag = "description";
         internal const string NoteXmlTag = "note";
         internal const string ParaXmlTag = "para";
         internal const string SeeAlsoXmlTag = "seealso";
@@ -40,6 +43,7 @@ namespace DocumentationAnalyzers.Helpers
         internal const string PathAttributeName = "path";
         internal const string CrefArgumentName = "cref";
         internal const string NameArgumentName = "name";
+        internal const string TypeAttributeName = "type";
 
         /// <summary>
         /// The &lt;placeholder&gt; tag is a Sandcastle Help File Builder extension to the standard XML documentation

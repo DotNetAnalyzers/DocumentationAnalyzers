@@ -14,6 +14,11 @@ namespace DocumentationAnalyzers
         public const string StyleRules = nameof(DocumentationAnalyzers) + "." + nameof(StyleRules);
 
         /// <summary>
+        /// Category definition for portability rules.
+        /// </summary>
+        public const string PortabilityRules = nameof(DocumentationAnalyzers) + "." + nameof(PortabilityRules);
+
+        /// <summary>
         /// Category definition for refactorings.
         /// </summary>
         public const string Refactorings = nameof(DocumentationAnalyzers) + "." + nameof(Refactorings);
