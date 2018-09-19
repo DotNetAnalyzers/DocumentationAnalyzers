@@ -225,6 +225,30 @@ class TestClass<T> {
             await VerifyCodeFixAsync(testCode, fixedCode);
         }
 
+        [Fact]
+        [WorkItem(42, "https://github.com/DotNetAnalyzers/DocumentationAnalyzers/issues/42")]
+        public async Task TestPropertyDocumentationWithCodeBlockAsync()
+        {
+            var testCode = @"
+class TestClass {
+    ///$$ <summary>
+    /// Provide a `value`.
+    /// </summary>
+    int Property => 3;
+}
+";
+            var fixedCode = @"
+class TestClass {
+    ///$$ <summary>
+    /// Provide a <c>value</c>.
+    /// </summary>
+    int Property => 3;
+}
+";
+
+            await VerifyCodeFixAsync(testCode, fixedCode);
+        }
+
         private static async Task VerifyCodeFixAsync(string testCode, string fixedCode)
         {
             int iterations;
