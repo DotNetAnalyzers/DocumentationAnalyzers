@@ -132,5 +132,113 @@ namespace DocumentationAnalyzers.PortabilityRules {
                 return ResourceManager.GetString("DOC201Title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Convert to expected element.
+        /// </summary>
+        internal static string DOC202CodeFix {
+            get {
+                return ResourceManager.GetString("DOC202CodeFix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use section elements correctly.
+        /// </summary>
+        internal static string DOC202Description {
+            get {
+                return ResourceManager.GetString("DOC202Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use section elements correctly.
+        /// </summary>
+        internal static string DOC202MessageFormat {
+            get {
+                return ResourceManager.GetString("DOC202MessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use section elements correctly.
+        /// </summary>
+        internal static string DOC202Title {
+            get {
+                return ResourceManager.GetString("DOC202Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Convert to expected element.
+        /// </summary>
+        internal static string DOC203CodeFix {
+            get {
+                return ResourceManager.GetString("DOC203CodeFix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use block elements correctly.
+        /// </summary>
+        internal static string DOC203Description {
+            get {
+                return ResourceManager.GetString("DOC203Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use block elements correctly.
+        /// </summary>
+        internal static string DOC203MessageFormat {
+            get {
+                return ResourceManager.GetString("DOC203MessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use block elements correctly.
+        /// </summary>
+        internal static string DOC203Title {
+            get {
+                return ResourceManager.GetString("DOC203Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Convert to expected element.
+        /// </summary>
+        internal static string DOC204CodeFix {
+            get {
+                return ResourceManager.GetString("DOC204CodeFix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use inline elements correctly.
+        /// </summary>
+        internal static string DOC204Description {
+            get {
+                return ResourceManager.GetString("DOC204Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use inline elements correctly.
+        /// </summary>
+        internal static string DOC204MessageFormat {
+            get {
+                return ResourceManager.GetString("DOC204MessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use inline elements correctly.
+        /// </summary>
+        internal static string DOC204Title {
+            get {
+                return ResourceManager.GetString("DOC204Title", resourceCulture);
+            }
+        }
     }
 }
