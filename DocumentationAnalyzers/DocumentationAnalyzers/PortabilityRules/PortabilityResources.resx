@@ -141,4 +141,40 @@
   <data name="DOC201Title" xml:space="preserve">
     <value>Item should have description</value>
   </data>
+  <data name="DOC202CodeFix" xml:space="preserve">
+    <value>Convert to expected element</value>
+  </data>
+  <data name="DOC202Description" xml:space="preserve">
+    <value>Use section elements correctly</value>
+  </data>
+  <data name="DOC202MessageFormat" xml:space="preserve">
+    <value>Use section elements correctly</value>
+  </data>
+  <data name="DOC202Title" xml:space="preserve">
+    <value>Use section elements correctly</value>
+  </data>
+  <data name="DOC203CodeFix" xml:space="preserve">
+    <value>Convert to expected element</value>
+  </data>
+  <data name="DOC203Description" xml:space="preserve">
+    <value>Use block elements correctly</value>
+  </data>
+  <data name="DOC203MessageFormat" xml:space="preserve">
+    <value>Use block elements correctly</value>
+  </data>
+  <data name="DOC203Title" xml:space="preserve">
+    <value>Use block elements correctly</value>
+  </data>
+  <data name="DOC204CodeFix" xml:space="preserve">
+    <value>Convert to expected element</value>
+  </data>
+  <data name="DOC204Description" xml:space="preserve">
+    <value>Use inline elements correctly</value>
+  </data>
+  <data name="DOC204MessageFormat" xml:space="preserve">
+    <value>Use inline elements correctly</value>
+  </data>
+  <data name="DOC204Title" xml:space="preserve">
+    <value>Use inline elements correctly</value>
+  </data>
 </root>
