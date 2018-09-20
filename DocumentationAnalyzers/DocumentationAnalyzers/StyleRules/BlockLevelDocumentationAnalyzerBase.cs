@@ -28,7 +28,7 @@ namespace DocumentationAnalyzers.StyleRules
         /// <summary>
         /// Determines if a particular node is a block-level documentation element.
         /// </summary>
-        /// <param name="node">The syntax node to examine.</param>
+        /// <param name="node"><para>The syntax node to examine.</para></param>
         /// <param name="includePotentialElements">
         /// <para><see langword="true"/> to only check for elements that are always block level elements.</para>
         /// <para>-or-</para>
