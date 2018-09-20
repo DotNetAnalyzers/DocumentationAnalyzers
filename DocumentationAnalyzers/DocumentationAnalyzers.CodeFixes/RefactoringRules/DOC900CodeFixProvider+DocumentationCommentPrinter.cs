@@ -43,7 +43,7 @@ namespace DocumentationAnalyzers.RefactoringRules
             /// <summary>
             /// Convert a block list to HTML.  Returns 0 on success, and sets result.
             /// </summary>
-            /// <remarks>Orig: blocks_to_html.</remarks>
+            /// <remarks><para>Orig: blocks_to_html.</para></remarks>
             public static void BlocksToHtml(System.IO.TextWriter writer, Block block, CommonMarkSettings settings, ISymbol documentedSymbol)
             {
                 var wrapper = new DocumentationCommentTextWriter(writer);
@@ -53,7 +53,7 @@ namespace DocumentationAnalyzers.RefactoringRules
             /// <summary>
             /// Escapes special URL characters.
             /// </summary>
-            /// <remarks>Orig: escape_html(inp, preserve_entities).</remarks>
+            /// <remarks><para>Orig: escape_html(inp, preserve_entities).</para></remarks>
             private static void EscapeUrl(string input, DocumentationCommentTextWriter target)
             {
                 if (input == null)
@@ -125,7 +125,7 @@ namespace DocumentationAnalyzers.RefactoringRules
             /// <summary>
             /// Escapes special HTML characters.
             /// </summary>
-            /// <remarks>Orig: escape_html(inp, preserve_entities).</remarks>
+            /// <remarks><para>Orig: escape_html(inp, preserve_entities).</para></remarks>
             private static void EscapeHtml(string input, DocumentationCommentTextWriter target)
             {
                 if (input.Length == 0)
@@ -176,7 +176,7 @@ namespace DocumentationAnalyzers.RefactoringRules
             /// <summary>
             /// Escapes special HTML characters.
             /// </summary>
-            /// <remarks>Orig: escape_html(inp, preserve_entities).</remarks>
+            /// <remarks><para>Orig: escape_html(inp, preserve_entities).</para></remarks>
             private static void EscapeHtml(StringContent inp, DocumentationCommentTextWriter target)
             {
                 int pos;
