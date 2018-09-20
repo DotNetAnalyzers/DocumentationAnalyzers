@@ -72,7 +72,7 @@
       <ImplementationNuspecVersion Condition="'$(PrereleaseVersion)' != ''">$(NuspecUnstableVersion)</ImplementationNuspecVersion>
       <ImplementationNuspecVersion Condition="'$(PrereleaseVersion)' == ''">$(NuspecStableVersion)</ImplementationNuspecVersion>
 
-      <NuspecProperties>id=$(NuspecId);configuration=$(Configuration);GitCommitIdShort=$(GitCommitIdShort);version=$(NuspecVersion);implId=$(ImplementationNuspecId);implVersion=$(ImplementationNuspecVersion)</NuspecProperties>
+      <NuspecProperties>id=$(NuspecId);configuration=$(Configuration);GitCommitIdShort=$(GitCommitIdShort);version=$(NuspecVersion);tag=$(NuspecStableVersion);implId=$(ImplementationNuspecId);implVersion=$(ImplementationNuspecVersion)</NuspecProperties>
     </PropertyGroup>
   </Target>
 
