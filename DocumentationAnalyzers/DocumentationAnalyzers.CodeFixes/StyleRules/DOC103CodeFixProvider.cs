@@ -26,8 +26,10 @@ namespace DocumentationAnalyzers.StyleRules
         public override FixAllProvider GetFixAllProvider()
             => CustomFixAllProviders.BatchFixer;
 
-        public override Task RegisterCodeFixesAsync(CodeFixContext context)
+        public override async Task RegisterCodeFixesAsync(CodeFixContext context)
         {
+            SyntaxNode root = await context.Document.GetSyntaxRootAsync(context.CancellationToken).ConfigureAwait(false);
+
             foreach (var diagnostic in context.Diagnostics)
             {
                 if (!FixableDiagnosticIds.Contains(diagnostic.Id))
@@ -35,15 +37,20 @@ namespace DocumentationAnalyzers.StyleRules
                     continue;
                 }
 
+                SyntaxToken token = root.FindToken(diagnostic.Location.SourceSpan.Start, findInsideTrivia: true);
+                if (!token.IsKind(SyntaxKind.XmlEntityLiteralToken))
+                {
+                    // Could be an unrelated CS1570 error.
+                    return;
+                }
+
                 context.RegisterCodeFix(
                     CodeAction.Create(
                         StyleResources.DOC103CodeFix,
-                        token => GetTransformedDocumentAsync(context.Document, diagnostic, token),
+                        cancellationToken => GetTransformedDocumentAsync(context.Document, diagnostic, cancellationToken),
                         nameof(DOC103CodeFixProvider)),
                     diagnostic);
             }
-
-            return SpecializedTasks.CompletedTask;
         }
 
         private static async Task<Document> GetTransformedDocumentAsync(Document document, Diagnostic diagnostic, CancellationToken cancellationToken)

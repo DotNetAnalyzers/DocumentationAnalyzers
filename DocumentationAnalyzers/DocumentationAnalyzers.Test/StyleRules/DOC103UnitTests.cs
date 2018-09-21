@@ -110,5 +110,105 @@ class TestClass
                 CompilerDiagnostics = CompilerDiagnostics.Warnings,
             }.RunAsync();
         }
+
+        [Fact]
+        public async Task TestHtmlEntityReplacementInInvalidXmlAsync()
+        {
+            var testCode = @"
+/// <summary>
+/// From A&rarr;B.
+/// <p>
+/// An unterminated second paragraph...
+/// </summary>
+class TestClass
+{
+}
+";
+            var fixedCode = @"
+/// <summary>
+/// From A→B.
+/// <p>
+/// An unterminated second paragraph...
+/// </summary>
+class TestClass
+{
+}
+";
+
+            await new CSharpCodeFixTest<DOC103UseUnicodeCharacters, DOC103CodeFixProvider, XUnitVerifier>
+            {
+                TestState =
+                {
+                    Sources = { testCode },
+                    ExpectedDiagnostics =
+                    {
+                        DiagnosticResult.CompilerWarning("CS1570").WithSpan(3, 11, 3, 11).WithMessage("XML comment has badly formed XML -- 'Reference to undefined entity 'rarr'.'"),
+                        DiagnosticResult.CompilerWarning("CS1570").WithSpan(6, 7, 6, 14).WithMessage("XML comment has badly formed XML -- 'End tag 'summary' does not match the start tag 'p'.'"),
+                        DiagnosticResult.CompilerWarning("CS1570").WithSpan(7, 1, 7, 1).WithMessage("XML comment has badly formed XML -- 'Expected an end tag for element 'summary'.'"),
+                    },
+                },
+                FixedState =
+                {
+                    Sources = { fixedCode },
+                    ExpectedDiagnostics =
+                    {
+                        DiagnosticResult.CompilerWarning("CS1570").WithSpan(6, 7, 6, 14).WithMessage("XML comment has badly formed XML -- 'End tag 'summary' does not match the start tag 'p'.'"),
+                        DiagnosticResult.CompilerWarning("CS1570").WithSpan(7, 1, 7, 1).WithMessage("XML comment has badly formed XML -- 'Expected an end tag for element 'summary'.'"),
+                    },
+                },
+                CompilerDiagnostics = CompilerDiagnostics.Warnings,
+            }.RunAsync();
+        }
+
+        [Fact]
+        public async Task TestNoCodeFixForRequiredEntityAsync()
+        {
+            var testCode = @"
+/// <summary>
+/// Processing for <c>&lt;code&gt;</c> elements.
+/// </summary>
+class TestClass
+{
+}
+";
+            var fixedCode = testCode;
+
+            await Verify.VerifyCodeFixAsync(testCode, fixedCode);
+        }
+
+        [Fact]
+        public async Task TestNoCodeFixForInvalidXmlAsync()
+        {
+            var testCode = @"
+/// <summary>
+/// From A to B.
+/// <p>
+/// An unterminated second paragraph...
+/// </summary>
+class TestClass
+{
+}
+";
+            var fixedCode = testCode;
+
+            await new CSharpCodeFixTest<DOC103UseUnicodeCharacters, DOC103CodeFixProvider, XUnitVerifier>
+            {
+                TestState =
+                {
+                    Sources = { testCode },
+                    ExpectedDiagnostics =
+                    {
+                        DiagnosticResult.CompilerWarning("CS1570").WithSpan(6, 7, 6, 14).WithMessage("XML comment has badly formed XML -- 'End tag 'summary' does not match the start tag 'p'.'"),
+                        DiagnosticResult.CompilerWarning("CS1570").WithSpan(7, 1, 7, 1).WithMessage("XML comment has badly formed XML -- 'Expected an end tag for element 'summary'.'"),
+                    },
+                },
+                FixedState =
+                {
+                    Sources = { fixedCode },
+                    InheritanceMode = StateInheritanceMode.AutoInheritAll,
+                },
+                CompilerDiagnostics = CompilerDiagnostics.Warnings,
+            }.RunAsync();
+        }
     }
 }
