@@ -82,9 +82,16 @@ public class ClassName
 /// <inheritdoc/>
 /// <token>SomeTokenName</token>
 /// <include />
+/// <quote>Quote</quote>
 /// <!-- Supported HTML block-level elements -->
 /// <div>Remarks.</div>
 /// <p>Remarks.</p>
+/// <h1>Heading</h1>
+/// <h2>Heading</h2>
+/// <h3>Heading</h3>
+/// <h4>Heading</h4>
+/// <h5>Heading</h5>
+/// <h6>Heading</h6>
 /// </remarks>
 public class ClassName
 {
