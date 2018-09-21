@@ -268,6 +268,11 @@ namespace DocumentationAnalyzers.Helpers
             return EmptyElement("paramref").AddAttributes(NameAttribute(parameterName));
         }
 
+        public static XmlEmptyElementSyntax TypeParamRefElement(string parameterName)
+        {
+            return EmptyElement(XmlCommentHelper.TypeParamRefXmlTag).AddAttributes(NameAttribute(parameterName));
+        }
+
         public static XmlEmptyElementSyntax SeeElement(CrefSyntax cref)
         {
             return EmptyElement("see").AddAttributes(CrefAttribute(cref));

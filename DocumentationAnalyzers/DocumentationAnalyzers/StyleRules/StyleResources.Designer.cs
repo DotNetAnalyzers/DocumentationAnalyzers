@@ -188,6 +188,150 @@ namespace DocumentationAnalyzers.StyleRules {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use &apos;see langword&apos;.
+        /// </summary>
+        internal static string DOC104CodeFix {
+            get {
+                return ResourceManager.GetString("DOC104CodeFix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prefer &apos;&lt;see langword=&quot;keyword&quot;/&gt;&apos; to &apos;&lt;c&gt;keyword&lt;/c&gt;&apos; for referencing language keywords.
+        /// </summary>
+        internal static string DOC104Description {
+            get {
+                return ResourceManager.GetString("DOC104Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prefer &apos;&lt;see langword=&quot;keyword&quot;/&gt;&apos; to &apos;&lt;c&gt;keyword&lt;/c&gt;&apos; for referencing language keywords.
+        /// </summary>
+        internal static string DOC104MessageFormat {
+            get {
+                return ResourceManager.GetString("DOC104MessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use &apos;see langword&apos;.
+        /// </summary>
+        internal static string DOC104Title {
+            get {
+                return ResourceManager.GetString("DOC104Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use &apos;paramref&apos;.
+        /// </summary>
+        internal static string DOC105CodeFix {
+            get {
+                return ResourceManager.GetString("DOC105CodeFix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prefer &apos;&lt;paramref name=&quot;parameter&quot;/&gt;&apos; to &apos;&lt;c&gt;parameter&lt;/c&gt;&apos; for referencing parameters.
+        /// </summary>
+        internal static string DOC105Description {
+            get {
+                return ResourceManager.GetString("DOC105Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prefer &apos;&lt;paramref name=&quot;parameter&quot;/&gt;&apos; to &apos;&lt;c&gt;parameter&lt;/c&gt;&apos; for referencing parameters.
+        /// </summary>
+        internal static string DOC105MessageFormat {
+            get {
+                return ResourceManager.GetString("DOC105MessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use &apos;paramref&apos;.
+        /// </summary>
+        internal static string DOC105Title {
+            get {
+                return ResourceManager.GetString("DOC105Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use &apos;typeparamref&apos;.
+        /// </summary>
+        internal static string DOC106CodeFix {
+            get {
+                return ResourceManager.GetString("DOC106CodeFix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prefer &apos;&lt;typeparamref name=&quot;type_parameter&quot;/&gt;&apos; to &apos;&lt;c&gt;type_parameter&lt;/c&gt;&apos; for referencing type parameters.
+        /// </summary>
+        internal static string DOC106Description {
+            get {
+                return ResourceManager.GetString("DOC106Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prefer &apos;&lt;typeparamref name=&quot;type_parameter&quot;/&gt;&apos; to &apos;&lt;c&gt;type_parameter&lt;/c&gt;&apos; for referencing type parameters.
+        /// </summary>
+        internal static string DOC106MessageFormat {
+            get {
+                return ResourceManager.GetString("DOC106MessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use &apos;typeparamref&apos;.
+        /// </summary>
+        internal static string DOC106Title {
+            get {
+                return ResourceManager.GetString("DOC106Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use &apos;see cref&apos;.
+        /// </summary>
+        internal static string DOC107CodeFix {
+            get {
+                return ResourceManager.GetString("DOC107CodeFix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prefer &apos;&lt;see cref=&quot;target&quot;/&gt;&apos; to &apos;&lt;c&gt;target&lt;/c&gt;&apos; for referencing code elements.
+        /// </summary>
+        internal static string DOC107Description {
+            get {
+                return ResourceManager.GetString("DOC107Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prefer &apos;&lt;see cref=&quot;target&quot;/&gt;&apos; to &apos;&lt;c&gt;target&lt;/c&gt;&apos; for referencing code elements.
+        /// </summary>
+        internal static string DOC107MessageFormat {
+            get {
+                return ResourceManager.GetString("DOC107MessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use &apos;see cref&apos;.
+        /// </summary>
+        internal static string DOC107Title {
+            get {
+                return ResourceManager.GetString("DOC107Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wrap text in paragraph element.
         /// </summary>
         internal static string DOC108CodeFix {

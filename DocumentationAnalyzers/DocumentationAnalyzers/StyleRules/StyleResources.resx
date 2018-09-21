@@ -159,6 +159,54 @@
   <data name="DOC103Title" xml:space="preserve">
     <value>Use Unicode characters</value>
   </data>
+  <data name="DOC104CodeFix" xml:space="preserve">
+    <value>Use 'see langword'</value>
+  </data>
+  <data name="DOC104Description" xml:space="preserve">
+    <value>Prefer '&lt;see langword="keyword"/&gt;' to '&lt;c&gt;keyword&lt;/c&gt;' for referencing language keywords</value>
+  </data>
+  <data name="DOC104MessageFormat" xml:space="preserve">
+    <value>Prefer '&lt;see langword="keyword"/&gt;' to '&lt;c&gt;keyword&lt;/c&gt;' for referencing language keywords</value>
+  </data>
+  <data name="DOC104Title" xml:space="preserve">
+    <value>Use 'see langword'</value>
+  </data>
+  <data name="DOC105CodeFix" xml:space="preserve">
+    <value>Use 'paramref'</value>
+  </data>
+  <data name="DOC105Description" xml:space="preserve">
+    <value>Prefer '&lt;paramref name="parameter"/&gt;' to '&lt;c&gt;parameter&lt;/c&gt;' for referencing parameters</value>
+  </data>
+  <data name="DOC105MessageFormat" xml:space="preserve">
+    <value>Prefer '&lt;paramref name="parameter"/&gt;' to '&lt;c&gt;parameter&lt;/c&gt;' for referencing parameters</value>
+  </data>
+  <data name="DOC105Title" xml:space="preserve">
+    <value>Use 'paramref'</value>
+  </data>
+  <data name="DOC106CodeFix" xml:space="preserve">
+    <value>Use 'typeparamref'</value>
+  </data>
+  <data name="DOC106Description" xml:space="preserve">
+    <value>Prefer '&lt;typeparamref name="type_parameter"/&gt;' to '&lt;c&gt;type_parameter&lt;/c&gt;' for referencing type parameters</value>
+  </data>
+  <data name="DOC106MessageFormat" xml:space="preserve">
+    <value>Prefer '&lt;typeparamref name="type_parameter"/&gt;' to '&lt;c&gt;type_parameter&lt;/c&gt;' for referencing type parameters</value>
+  </data>
+  <data name="DOC106Title" xml:space="preserve">
+    <value>Use 'typeparamref'</value>
+  </data>
+  <data name="DOC107CodeFix" xml:space="preserve">
+    <value>Use 'see cref'</value>
+  </data>
+  <data name="DOC107Description" xml:space="preserve">
+    <value>Prefer '&lt;see cref="target"/&gt;' to '&lt;c&gt;target&lt;/c&gt;' for referencing code elements</value>
+  </data>
+  <data name="DOC107MessageFormat" xml:space="preserve">
+    <value>Prefer '&lt;see cref="target"/&gt;' to '&lt;c&gt;target&lt;/c&gt;' for referencing code elements</value>
+  </data>
+  <data name="DOC107Title" xml:space="preserve">
+    <value>Use 'see cref'</value>
+  </data>
   <data name="DOC108CodeFix" xml:space="preserve">
     <value>Wrap text in paragraph element</value>
   </data>
