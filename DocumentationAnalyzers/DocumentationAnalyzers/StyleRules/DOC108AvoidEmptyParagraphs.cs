@@ -44,7 +44,7 @@ namespace DocumentationAnalyzers.StyleRules
         {
             var xmlEmptyElement = (XmlEmptyElementSyntax)context.Node;
             var name = xmlEmptyElement.Name;
-            if (name is null || name.Prefix != null)
+            if (name.Prefix != null)
             {
                 return;
             }
