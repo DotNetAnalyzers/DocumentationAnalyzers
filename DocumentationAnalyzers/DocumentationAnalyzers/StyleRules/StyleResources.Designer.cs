@@ -150,5 +150,41 @@ namespace DocumentationAnalyzers.StyleRules {
                 return ResourceManager.GetString("DOC102Title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrap text in paragraph element.
+        /// </summary>
+        internal static string DOC108CodeFix {
+            get {
+                return ResourceManager.GetString("DOC108CodeFix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Avoid empty paragraphs.
+        /// </summary>
+        internal static string DOC108Description {
+            get {
+                return ResourceManager.GetString("DOC108Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Avoid empty paragraphs.
+        /// </summary>
+        internal static string DOC108MessageFormat {
+            get {
+                return ResourceManager.GetString("DOC108MessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Avoid empty paragraphs.
+        /// </summary>
+        internal static string DOC108Title {
+            get {
+                return ResourceManager.GetString("DOC108Title", resourceCulture);
+            }
+        }
     }
 }
