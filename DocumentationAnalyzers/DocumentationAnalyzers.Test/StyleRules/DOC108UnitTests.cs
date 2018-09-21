@@ -41,6 +41,55 @@ class TestClass
         }
 
         [Fact]
+        public async Task TestEmptySeeElementSeparatesParagraphsAsync()
+        {
+            var testCode = @"
+/// <summary>
+/// Summary 1
+/// <see cref=""TestClass""/>
+/// Summary 2
+/// </summary>
+class TestClass
+{
+}
+";
+
+            await Verify.VerifyAnalyzerAsync(testCode);
+        }
+
+        [Fact]
+        public async Task TestPrefixedParagraphElementSeparatesParagraphsAsync()
+        {
+            var testCode = @"
+/// <summary>
+/// Summary 1
+/// <html:p/>
+/// Summary 2
+/// </summary>
+class TestClass
+{
+}
+";
+
+            await Verify.VerifyAnalyzerAsync(testCode);
+        }
+
+        [Fact]
+        public async Task TestEmptyElementWithMissingNameAsync()
+        {
+            var testCode = @"
+/// <summary>
+/// <
+/// </summary>
+class TestClass
+{
+}
+";
+
+            await Verify.VerifyAnalyzerAsync(testCode);
+        }
+
+        [Fact]
         public async Task TestEmptyHtmlParagraphElementSeparatesParagraphsAsync()
         {
             var testCode = @"
