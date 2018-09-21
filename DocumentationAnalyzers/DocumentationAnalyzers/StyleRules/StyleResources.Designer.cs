@@ -152,6 +152,42 @@ namespace DocumentationAnalyzers.StyleRules {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use Unicode characters.
+        /// </summary>
+        internal static string DOC103CodeFix {
+            get {
+                return ResourceManager.GetString("DOC103CodeFix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use Unicode characters.
+        /// </summary>
+        internal static string DOC103Description {
+            get {
+                return ResourceManager.GetString("DOC103Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use Unicode characters.
+        /// </summary>
+        internal static string DOC103MessageFormat {
+            get {
+                return ResourceManager.GetString("DOC103MessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use Unicode characters.
+        /// </summary>
+        internal static string DOC103Title {
+            get {
+                return ResourceManager.GetString("DOC103Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wrap text in paragraph element.
         /// </summary>
         internal static string DOC108CodeFix {
