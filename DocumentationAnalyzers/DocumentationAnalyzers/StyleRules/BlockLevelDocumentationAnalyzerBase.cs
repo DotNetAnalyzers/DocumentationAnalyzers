@@ -179,6 +179,12 @@ namespace DocumentationAnalyzers.StyleRules
 
             // block-level HTML elements => allow for this diagnostic
             case "div":
+            case "h1":
+            case "h2":
+            case "h3":
+            case "h4":
+            case "h5":
+            case "h6":
             case "p":
                 return true;
 
