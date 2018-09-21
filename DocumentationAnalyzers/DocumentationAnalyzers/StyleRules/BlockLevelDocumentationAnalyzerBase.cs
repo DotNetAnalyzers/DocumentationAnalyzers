@@ -173,6 +173,7 @@ namespace DocumentationAnalyzers.StyleRules
             // potential block-level elements => allow
             case XmlCommentHelper.InheritdocXmlTag:
             case "include":
+            case "quote":
             case "token":
                 return true;
 
