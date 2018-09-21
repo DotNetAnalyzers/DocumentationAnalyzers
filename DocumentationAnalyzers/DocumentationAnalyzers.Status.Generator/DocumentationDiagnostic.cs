@@ -28,12 +28,12 @@ namespace DocumentationAnalyzers.Status.Generator
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the diagnostic is implemented.
+        /// Gets or sets the default diagnostic severity.
         /// </summary>
         /// <value>
-        /// <see langword="true"/> if the diagnostic is implemented; otherwise <see langword="false"/>.
+        /// The default diagnostic severity.
         /// </value>
-        public bool HasImplementation { get; set; }
+        public string Severity { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the diagnostic is enabled. This can indicate if the

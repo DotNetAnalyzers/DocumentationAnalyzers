@@ -70,7 +70,7 @@
                         Title
                     </td>
                     <td>
-                        Has Implementation
+                        Severity
                     </td>
                     <td>
                         Status
@@ -91,14 +91,10 @@
     </div>
 
     <script id="diagnostic-color" type="text/x-jsrender">
-        {{if HasImplementation}}
         {{if Status !== "DisabledNoTests"}}
         success
         {{else}}
         warning
-        {{/if}}
-        {{else }}
-        danger
         {{/if}}
     </script>
 
@@ -114,7 +110,7 @@
                 {{>Title}}
             </td>
             <td>
-                {{>HasImplementation}}
+                {{>Severity}}
             </td>
             <td>
                 {{>Status}}
@@ -173,7 +169,10 @@
     </script>
 
     <script type="text/javascript">
-        $.getJSON("https://ci.appveyor.com/api/projects/sharwell/Documentationanalyzers/artifacts/DocumentationAnalyzers.Status.json?branch=master&pr=false&stream=true&job=Configuration:%20Release", function (data) {
+        var urlParams = new URLSearchParams(window.location.search);
+        var branch = urlParams.get('branch') || 'master';
+        var pr = urlParams.get('pr') === 'true' ? 'true' : 'false';
+        $.getJSON(`https://ci.appveyor.com/api/projects/sharwell/Documentationanalyzers/artifacts/DocumentationAnalyzers.Status.json?branch=${branch}&pr=${pr}&stream=true&job=Configuration:%20Release`, function (data) {
             $("#renderedDiagnostics").html($.templates($("#diagnostics").html()).render(data));
             $("#renderedCommitInfo").html($.templates($("#commitInfo").html()).render(data.git));
         });
