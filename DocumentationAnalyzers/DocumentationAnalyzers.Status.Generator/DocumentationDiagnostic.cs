@@ -28,6 +28,14 @@ namespace DocumentationAnalyzers.Status.Generator
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or sets the default diagnostic severity.
+        /// </summary>
+        /// <value>
+        /// The default diagnostic severity.
+        /// </value>
+        public string Severity { get; set; }
+
+        /// <summary>
         /// Gets or sets a value indicating whether the diagnostic is enabled. This can indicate if the
         /// diagnostic is enabled by default, and if not, whether it is disabled because
         /// there are no tests for the diagnostic.

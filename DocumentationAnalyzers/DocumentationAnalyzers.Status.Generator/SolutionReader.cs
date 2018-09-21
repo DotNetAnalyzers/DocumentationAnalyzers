@@ -138,6 +138,7 @@ namespace DocumentationAnalyzers.Status.Generator
                     {
                         Id = descriptorInfo.Id,
                         Category = descriptorInfo.Category,
+                        Severity = descriptorInfo.DefaultSeverity.ToString(),
                         Status = status,
                         Name = shortName,
                         Title = descriptorInfo.Title.ToString(),
