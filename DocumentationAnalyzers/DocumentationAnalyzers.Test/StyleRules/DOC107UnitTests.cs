@@ -47,6 +47,39 @@ class TestClass
         }
 
         [Fact]
+        public async Task TestPropertyNameEncodedAsync()
+        {
+            var testCode = @"
+class TestClass
+{
+    int a => 3;
+
+    /// <summary>
+    /// Consider a property [|<c>&#97;</c>|].
+    /// </summary>
+    void Method()
+    {
+    }
+}
+";
+            var fixedCode = @"
+class TestClass
+{
+    int a => 3;
+
+    /// <summary>
+    /// Consider a property <see cref=""&#97;""/>.
+    /// </summary>
+    void Method()
+    {
+    }
+}
+";
+
+            await Verify.VerifyCodeFixAsync(testCode, fixedCode);
+        }
+
+        [Fact]
         public async Task TestFieldNameAsync()
         {
             var testCode = @"
@@ -250,6 +283,82 @@ class TestClass
 ";
 
             await Verify.VerifyCodeFixAsync(testCode, fixedCode);
+        }
+
+        [Fact]
+        public async Task TestNonDiagnosticPotentialCasesAsync()
+        {
+            // These cases could qualify for this diagnostic, but currently do not.
+            var testCode = @"
+class TestClass
+{
+    int a => 3;
+
+    /// <summary>
+    /// Consider a property <c> a</c>.
+    /// Consider a property <c>a </c>.
+    /// Consider a property <c> a </c>.
+    /// Consider a property <c>a
+    /// </c>.
+    /// Consider a property <c>
+    /// a</c>.
+    /// Consider a property <c>
+    /// a
+    /// </c>.
+    /// </summary>
+    void Method()
+    {
+    }
+}
+";
+
+            await Verify.VerifyAnalyzerAsync(testCode);
+        }
+
+        [Fact]
+        public async Task TestNonDiagnosticCasesAsync()
+        {
+            // These cases *shouldn't* qualify for this diagnostic.
+            var testCode = @"
+class TestClass
+{
+    int a => 3;
+
+    /// <summary>
+    /// Consider a property <c>b</c>.
+    /// Consider a property <c>A</c>.
+    /// Consider a property <c>a&gt;</c>.
+    /// Consider a property <c>&gt;a</c>.
+    /// Consider a property <c><em>a</em></c>.
+    /// Consider a property <c><em>a</em>a</c>.
+    /// </summary>
+    void Method()
+    {
+    }
+}
+";
+
+            await Verify.VerifyAnalyzerAsync(testCode);
+        }
+
+        [Fact]
+        public async Task TestNonCodeAsync()
+        {
+            var testCode = @"
+class TestClass
+{
+    int a => 3;
+
+    /// <summary>
+    /// Consider a property <p:c>a</p:c>.
+    /// </summary>
+    void Method()
+    {
+    }
+}
+";
+
+            await Verify.VerifyAnalyzerAsync(testCode);
         }
     }
 }

@@ -60,5 +60,73 @@ class TestClass
 
             await Verify.VerifyAnalyzerAsync(testCode);
         }
+
+        [Fact]
+        public async Task TestNonDiagnosticPotentialCasesAsync()
+        {
+            // These cases could qualify for this diagnostic, but currently do not.
+            var testCode = @"
+class TestClass
+{
+    /// <summary>
+    /// The keyword is <c>&#97;wait</c>.
+    /// The keyword is <c> true</c>.
+    /// The keyword is <c>true </c>.
+    /// The keyword is <c> true </c>.
+    /// The keyword is <c>true
+    /// </c>.
+    /// The keyword is <c>
+    /// true</c>.
+    /// The keyword is <c>
+    /// true
+    /// </c>.
+    /// </summary>
+    void Method<a>()
+    {
+    }
+}
+";
+
+            await Verify.VerifyAnalyzerAsync(testCode);
+        }
+
+        [Fact]
+        public async Task TestNonDiagnosticCasesAsync()
+        {
+            // These cases *shouldn't* qualify for this diagnostic.
+            var testCode = @"
+class TestClass
+{
+    /// <summary>
+    /// The keyword is <c>not-keyword</c>.
+    /// The keyword is <c>True</c>.
+    /// The keyword is <c>true&gt;</c>.
+    /// The keyword is <c>&gt;true</c>.
+    /// The keyword is <c><em>true</em></c>.
+    /// The keyword is <c><em>true</em>true</c>.
+    /// </summary>
+    void Method<a>()
+    {
+    }
+}
+";
+
+            await Verify.VerifyAnalyzerAsync(testCode);
+        }
+
+        [Fact]
+        public async Task TestNonCodeAsync()
+        {
+            var testCode = @"
+/// <summary>
+/// The keyword is <p:c>true</p:c>.
+/// </summary>
+class TestClass
+{
+}
+";
+
+            await Verify.VerifyAnalyzerAsync(testCode);
+        }
     }
 }

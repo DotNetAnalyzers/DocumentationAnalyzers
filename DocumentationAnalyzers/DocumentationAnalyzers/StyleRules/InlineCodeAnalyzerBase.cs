@@ -28,8 +28,8 @@ namespace DocumentationAnalyzers.StyleRules
         private void HandleXmlElementSyntax(SyntaxNodeAnalysisContext context)
         {
             var xmlElement = (XmlElementSyntax)context.Node;
-            var name = xmlElement.StartTag?.Name;
-            if (name is null || name.Prefix != null)
+            var name = xmlElement.StartTag.Name;
+            if (name.Prefix != null)
             {
                 return;
             }

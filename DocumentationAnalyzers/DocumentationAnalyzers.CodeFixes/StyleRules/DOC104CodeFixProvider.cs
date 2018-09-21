@@ -5,6 +5,7 @@ namespace DocumentationAnalyzers.StyleRules
 {
     using System.Collections.Immutable;
     using System.Composition;
+    using System.Diagnostics;
     using System.Threading;
     using System.Threading.Tasks;
     using DocumentationAnalyzers.Helpers;
@@ -27,10 +28,7 @@ namespace DocumentationAnalyzers.StyleRules
         {
             foreach (var diagnostic in context.Diagnostics)
             {
-                if (!FixableDiagnosticIds.Contains(diagnostic.Id))
-                {
-                    continue;
-                }
+                Debug.Assert(FixableDiagnosticIds.Contains(diagnostic.Id), "Assertion failed: FixableDiagnosticIds.Contains(diagnostic.Id)");
 
                 context.RegisterCodeFix(
                     CodeAction.Create(
