@@ -112,6 +112,35 @@ class TestClass
         }
 
         [Fact]
+        public async Task TestUnknownEntityNotReplacedAsync()
+        {
+            var testCode = @"
+/// <summary>
+/// Unknown entity &myEntity;.
+/// </summary>
+class TestClass
+{
+}
+";
+            var fixedCode = testCode;
+
+            await new CSharpCodeFixTest<DOC103UseUnicodeCharacters, DOC103CodeFixProvider, XUnitVerifier>
+            {
+                TestState =
+                {
+                    Sources = { testCode },
+                    ExpectedDiagnostics = { DiagnosticResult.CompilerWarning("CS1570").WithSpan(3, 20, 3, 20).WithMessage("XML comment has badly formed XML -- 'Reference to undefined entity 'myEntity'.'") },
+                },
+                FixedState =
+                {
+                    Sources = { fixedCode },
+                    InheritanceMode = StateInheritanceMode.AutoInheritAll,
+                },
+                CompilerDiagnostics = CompilerDiagnostics.Warnings,
+            }.RunAsync();
+        }
+
+        [Fact]
         public async Task TestHtmlEntityReplacementInInvalidXmlAsync()
         {
             var testCode = @"

@@ -42,32 +42,32 @@ namespace DocumentationAnalyzers.StyleRules
                     return;
                 }
 
+                string newText = token.ValueText;
+                if (newText == token.Text)
+                {
+                    // The entity is not recognized. Try decoding as an HTML entity.
+                    newText = WebUtility.HtmlDecode(token.Text);
+                }
+
+                if (newText == token.Text)
+                {
+                    // Unknown entity
+                    continue;
+                }
+
                 context.RegisterCodeFix(
                     CodeAction.Create(
                         StyleResources.DOC103CodeFix,
-                        cancellationToken => GetTransformedDocumentAsync(context.Document, diagnostic, cancellationToken),
+                        cancellationToken => GetTransformedDocumentAsync(context.Document, diagnostic, newText, cancellationToken),
                         nameof(DOC103CodeFixProvider)),
                     diagnostic);
             }
         }
 
-        private static async Task<Document> GetTransformedDocumentAsync(Document document, Diagnostic diagnostic, CancellationToken cancellationToken)
+        private static async Task<Document> GetTransformedDocumentAsync(Document document, Diagnostic diagnostic, string newText, CancellationToken cancellationToken)
         {
             SyntaxNode root = await document.GetSyntaxRootAsync(cancellationToken).ConfigureAwait(false);
             SyntaxToken token = root.FindToken(diagnostic.Location.SourceSpan.Start, findInsideTrivia: true);
-
-            string newText = token.ValueText;
-            if (newText == token.Text)
-            {
-                // The entity is not recognized. Try decoding as an HTML entity.
-                newText = WebUtility.HtmlDecode(token.Text);
-            }
-
-            if (newText == token.Text)
-            {
-                // Unknown entity
-                return document;
-            }
 
             var newToken = SyntaxFactory.Token(token.LeadingTrivia, SyntaxKind.XmlTextLiteralToken, newText, newText, token.TrailingTrivia);
 
