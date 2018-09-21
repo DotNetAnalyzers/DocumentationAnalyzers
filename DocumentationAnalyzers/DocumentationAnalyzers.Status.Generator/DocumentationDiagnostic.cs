@@ -28,14 +28,6 @@ namespace DocumentationAnalyzers.Status.Generator
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the diagnostic is implemented.
-        /// </summary>
-        /// <value>
-        /// <see langword="true"/> if the diagnostic is implemented; otherwise <see langword="false"/>.
-        /// </value>
-        public bool HasImplementation { get; set; }
-
-        /// <summary>
         /// Gets or sets a value indicating whether the diagnostic is enabled. This can indicate if the
         /// diagnostic is enabled by default, and if not, whether it is disabled because
         /// there are no tests for the diagnostic.

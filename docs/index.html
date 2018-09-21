@@ -70,9 +70,6 @@
                         Title
                     </td>
                     <td>
-                        Has Implementation
-                    </td>
-                    <td>
                         Status
                     </td>
                     <td style="overflow: visible; width: 0;">
@@ -91,14 +88,10 @@
     </div>
 
     <script id="diagnostic-color" type="text/x-jsrender">
-        {{if HasImplementation}}
         {{if Status !== "DisabledNoTests"}}
         success
         {{else}}
         warning
-        {{/if}}
-        {{else }}
-        danger
         {{/if}}
     </script>
 
@@ -112,9 +105,6 @@
             </td>
             <td>
                 {{>Title}}
-            </td>
-            <td>
-                {{>HasImplementation}}
             </td>
             <td>
                 {{>Status}}

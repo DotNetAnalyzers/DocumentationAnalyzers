@@ -123,8 +123,6 @@ namespace DocumentationAnalyzers.Status.Generator
                     continue;
                 }
 
-                bool hasImplementation = HasImplementation(syntaxRoot);
-
                 IEnumerable<DiagnosticDescriptor> descriptorInfos = GetDescriptor(classSymbol);
 
                 foreach (var descriptorInfo in descriptorInfos)
@@ -140,7 +138,6 @@ namespace DocumentationAnalyzers.Status.Generator
                     {
                         Id = descriptorInfo.Id,
                         Category = descriptorInfo.Category,
-                        HasImplementation = hasImplementation,
                         Status = status,
                         Name = shortName,
                         Title = descriptorInfo.Title.ToString(),
@@ -154,23 +151,6 @@ namespace DocumentationAnalyzers.Status.Generator
             }
 
             return diagnostics.ToImmutable();
-        }
-
-        private static bool HasImplementation(SyntaxNode syntaxRoot)
-        {
-            bool hasImplementation = true;
-            foreach (var trivia in syntaxRoot.DescendantTrivia())
-            {
-                if (trivia.IsKind(SyntaxKind.SingleLineCommentTrivia))
-                {
-                    if (trivia.ToFullString().Contains("TODO: Implement analysis"))
-                    {
-                        hasImplementation = false;
-                    }
-                }
-            }
-
-            return hasImplementation;
         }
 
         private async Task InitializeAsync()
