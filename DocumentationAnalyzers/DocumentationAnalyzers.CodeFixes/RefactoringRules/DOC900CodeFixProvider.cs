@@ -60,10 +60,9 @@ namespace DocumentationAnalyzers.RefactoringRules
                     continue;
                 }
 
-                string description = "Render documentation as Markdown";
                 context.RegisterCodeFix(
                     CodeAction.Create(
-                        description,
+                        RefactoringResources.DOC900CodeFix,
                         cancellationToken => CreateChangedDocumentAsync(context, documentationCommentTriviaSyntax, cancellationToken),
                         nameof(DOC900CodeFixProvider)),
                     diagnostic);

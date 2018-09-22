@@ -62,6 +62,15 @@ namespace DocumentationAnalyzers.RefactoringRules {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Render documentation as Markdown.
+        /// </summary>
+        internal static string DOC900CodeFix {
+            get {
+                return ResourceManager.GetString("DOC900CodeFix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Render documentation as Markdown (Refactoring).
         /// </summary>
         internal static string DOC900Description {
