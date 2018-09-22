@@ -27,10 +27,7 @@ namespace DocumentationAnalyzers.RefactoringRules
             ImmutableArray.Create(DOC901ConvertToDocumentationComment.DiagnosticId);
 
         public override FixAllProvider GetFixAllProvider()
-        {
-            // this is unlikely to work as expected
-            return null;
-        }
+            => CustomFixAllProviders.BatchFixer;
 
         public override Task RegisterCodeFixesAsync(CodeFixContext context)
         {
