@@ -71,13 +71,7 @@ namespace DocumentationAnalyzers.RefactoringRules
                 switch (leadingTrivia[i].Kind())
                 {
                 case SyntaxKind.WhitespaceTrivia:
-                    if (isAtEndOfLine)
-                    {
-                        // Multiple newlines
-                        break;
-                    }
-
-                    // Ignore indentation
+                    // Ignore indentation and/or trailing whitespace
                     continue;
 
                 case SyntaxKind.EndOfLineTrivia:
