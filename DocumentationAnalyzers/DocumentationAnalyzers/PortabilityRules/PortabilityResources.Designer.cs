@@ -242,6 +242,42 @@ namespace DocumentationAnalyzers.PortabilityRules {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Inherit documentation.
+        /// </summary>
+        internal static string DOC205CodeFix {
+            get {
+                return ResourceManager.GetString("DOC205CodeFix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inherit documentation.
+        /// </summary>
+        internal static string DOC205Description {
+            get {
+                return ResourceManager.GetString("DOC205Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inherit documentation.
+        /// </summary>
+        internal static string DOC205MessageFormat {
+            get {
+                return ResourceManager.GetString("DOC205MessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inherit documentation.
+        /// </summary>
+        internal static string DOC205Title {
+            get {
+                return ResourceManager.GetString("DOC205Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &apos;langword&apos; attribute value should be a language keyword.
         /// </summary>
         internal static string DOC207Description {

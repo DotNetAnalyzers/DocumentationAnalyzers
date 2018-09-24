@@ -4,6 +4,8 @@
 namespace DocumentationAnalyzers.Helpers
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Xml.Linq;
     using Microsoft.CodeAnalysis;
     using Microsoft.CodeAnalysis.CSharp;
@@ -65,7 +67,65 @@ namespace DocumentationAnalyzers.Helpers
 
         public static XmlEmptyElementSyntax EmptyElement(string localName)
         {
-            return SyntaxFactory.XmlEmptyElement(SyntaxFactory.XmlName(localName));
+            return EmptyElement(SyntaxFactory.XmlName(localName));
+        }
+
+        public static XmlEmptyElementSyntax EmptyElement(XmlNameSyntax name)
+        {
+            return SyntaxFactory.XmlEmptyElement(name);
+        }
+
+        public static XmlNodeSyntax Node(string newLineText, XNode node)
+        {
+            if (node is XElement element)
+            {
+                return Element(newLineText, element);
+            }
+            else if (node is XText text)
+            {
+                string[] value = text.Value.Split('\n');
+                var textTokens = new List<SyntaxToken>((value.Length * 2) - 1);
+                for (int i = 0; i < value.Length; i++)
+                {
+                    if (i > 0)
+                    {
+                        textTokens.Add(TextNewLine(newLineText));
+                    }
+
+                    var lineText = value[i];
+                    if (lineText.StartsWith("    "))
+                    {
+                        lineText = lineText.Substring(4);
+                    }
+
+                    textTokens.Add(TextLiteral(lineText, escapeQuotes: false, xmlEscape: true));
+                }
+
+                return Text(textTokens.ToArray());
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public static XmlNodeSyntax Element(string newLineText, XElement element)
+        {
+            var name = SyntaxFactory.XmlName(element.Name.LocalName);
+            var attributes = element.Attributes().Select(attribute => TextAttribute(attribute.Name.LocalName, attribute.Value));
+
+            XmlNodeSyntax result;
+            if (element.IsEmpty)
+            {
+                result = EmptyElement(name).AddAttributes(attributes.ToArray());
+            }
+            else
+            {
+                var content = element.Nodes().Select(child => Node(newLineText, child));
+                result = Element(name, List(content.ToArray())).AddStartTagAttributes(attributes.ToArray());
+            }
+
+            return result;
         }
 
         public static SyntaxList<XmlNodeSyntax> List(params XmlNodeSyntax[] nodes)
