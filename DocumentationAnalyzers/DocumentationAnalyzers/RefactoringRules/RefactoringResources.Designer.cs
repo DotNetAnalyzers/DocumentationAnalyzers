@@ -96,5 +96,41 @@ namespace DocumentationAnalyzers.RefactoringRules {
                 return ResourceManager.GetString("DOC900Title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Convert to documentation comment.
+        /// </summary>
+        internal static string DOC901CodeFix {
+            get {
+                return ResourceManager.GetString("DOC901CodeFix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Convert to documentation comment.
+        /// </summary>
+        internal static string DOC901Description {
+            get {
+                return ResourceManager.GetString("DOC901Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Convert to documentation comment.
+        /// </summary>
+        internal static string DOC901MessageFormat {
+            get {
+                return ResourceManager.GetString("DOC901MessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Convert to documentation comment.
+        /// </summary>
+        internal static string DOC901Title {
+            get {
+                return ResourceManager.GetString("DOC901Title", resourceCulture);
+            }
+        }
     }
 }
