@@ -177,4 +177,13 @@
   <data name="DOC204Title" xml:space="preserve">
     <value>Use inline elements correctly</value>
   </data>
+  <data name="DOC207Description" xml:space="preserve">
+    <value>Use 'see langword' correctly</value>
+  </data>
+  <data name="DOC207MessageFormat" xml:space="preserve">
+    <value>Use 'see langword' correctly</value>
+  </data>
+  <data name="DOC207Title" xml:space="preserve">
+    <value>Use 'see langword' correctly</value>
+  </data>
 </root>
