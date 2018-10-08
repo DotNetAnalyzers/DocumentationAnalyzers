@@ -10,3 +10,4 @@ Identifier | Name | Description
 [DOC203](DOC203.md) | UseBlockElementsCorrectly | The documentation contains a block element where a section or inline element was expected.
 [DOC204](DOC204.md) | UseInlineElementsCorrectly | The documentation contains an inline element where a section or block element was expected.
 [DOC207](DOC207.md) | UseSeeLangwordCorrectly | The documentation contains a `<see langword="..."/>` element with an unrecognized keyword.
+[DOC209](DOC209.md) | UseSeeHrefCorrectly | The documentation contains a `<see href="..."/>` element with an unrecognized URI.
