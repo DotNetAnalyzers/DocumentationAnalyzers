@@ -12,7 +12,7 @@ namespace DocumentationAnalyzers.StyleRules
     internal class DOC104UseSeeLangword : InlineCodeAnalyzerBase
     {
         /// <summary>
-        /// The ID for diagnostics produced <c>true</c> by the <see cref="DOC104UseSeeLangword"/> analyzer.
+        /// The ID for diagnostics produced by the <see cref="DOC104UseSeeLangword"/> analyzer.
         /// </summary>
         public const string DiagnosticId = "DOC104";
         private const string HelpLink = "https://github.com/DotNetAnalyzers/DocumentationAnalyzers/blob/master/docs/DOC104.md";
