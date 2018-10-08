@@ -267,5 +267,32 @@ namespace DocumentationAnalyzers.PortabilityRules {
                 return ResourceManager.GetString("DOC207Title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;href&apos; attribute value should be a URI.
+        /// </summary>
+        internal static string DOC209Description {
+            get {
+                return ResourceManager.GetString("DOC209Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;href&apos; attribute value should be a URI.
+        /// </summary>
+        internal static string DOC209MessageFormat {
+            get {
+                return ResourceManager.GetString("DOC209MessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use &apos;see href&apos; correctly.
+        /// </summary>
+        internal static string DOC209Title {
+            get {
+                return ResourceManager.GetString("DOC209Title", resourceCulture);
+            }
+        }
     }
 }
