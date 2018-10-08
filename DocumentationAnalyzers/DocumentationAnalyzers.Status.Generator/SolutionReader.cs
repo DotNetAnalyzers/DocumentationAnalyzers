@@ -293,18 +293,17 @@ namespace DocumentationAnalyzers.Status.Generator
                 var codeFixes = CodeFixProviders
                     .Where(x => x.FixableDiagnosticIds.Contains(diagnosticId))
                     .Select(x => IsBatchFixer(x))
-                    .Where(x => x != null)
-                    .Select(x => (bool)x).ToArray();
+                    .ToArray();
 
                 hasCodeFix = codeFixes.Length > 0;
 
                 codeFixStatus = hasCodeFix ? CodeFixStatus.Implemented : CodeFixStatus.NotYetImplemented;
 
-                if (codeFixes.Any(x => x))
+                if (codeFixes.Any(x => x ?? false))
                 {
                     fixAllStatus = FixAllStatus.BatchFixer;
                 }
-                else if (codeFixes.Length > 0)
+                else if (codeFixes.Any(x => x != null))
                 {
                     fixAllStatus = FixAllStatus.CustomImplementation;
                 }
