@@ -242,7 +242,7 @@ namespace DocumentationAnalyzers.PortabilityRules {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use &apos;see langword&apos; correctly.
+        ///   Looks up a localized string similar to &apos;langword&apos; attribute value should be a language keyword.
         /// </summary>
         internal static string DOC207Description {
             get {
@@ -251,7 +251,7 @@ namespace DocumentationAnalyzers.PortabilityRules {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use &apos;see langword&apos; correctly.
+        ///   Looks up a localized string similar to &apos;langword&apos; attribute value should be a language keyword.
         /// </summary>
         internal static string DOC207MessageFormat {
             get {
