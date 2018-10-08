@@ -240,5 +240,32 @@ namespace DocumentationAnalyzers.PortabilityRules {
                 return ResourceManager.GetString("DOC204Title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;langword&apos; attribute value should be a language keyword.
+        /// </summary>
+        internal static string DOC207Description {
+            get {
+                return ResourceManager.GetString("DOC207Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;langword&apos; attribute value should be a language keyword.
+        /// </summary>
+        internal static string DOC207MessageFormat {
+            get {
+                return ResourceManager.GetString("DOC207MessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use &apos;see langword&apos; correctly.
+        /// </summary>
+        internal static string DOC207Title {
+            get {
+                return ResourceManager.GetString("DOC207Title", resourceCulture);
+            }
+        }
     }
 }

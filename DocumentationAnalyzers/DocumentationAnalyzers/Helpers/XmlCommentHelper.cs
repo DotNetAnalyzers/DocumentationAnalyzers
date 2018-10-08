@@ -43,6 +43,7 @@ namespace DocumentationAnalyzers.Helpers
         internal const string PathAttributeName = "path";
         internal const string CrefArgumentName = "cref";
         internal const string NameArgumentName = "name";
+        internal const string LangwordArgumentName = "langword";
         internal const string TypeAttributeName = "type";
 
         /// <summary>
