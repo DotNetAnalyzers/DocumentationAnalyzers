@@ -87,5 +87,39 @@ class TestClass
 
             await Verify.VerifyAnalyzerAsync(testCode);
         }
+
+        [Fact]
+        public async Task TestOtherAttributesIgnoredAsync()
+        {
+            var testCode = @"
+/// <summary>
+/// <see Langword=""not a keyword""/>
+/// <see x:langword=""not a keyword""/>
+/// <see name=""not a keyword""/>
+/// <see cref=""System.String""/>
+/// </summary>
+class TestClass
+{
+}
+";
+
+            await Verify.VerifyAnalyzerAsync(testCode);
+        }
+
+        [Fact]
+        public async Task TestOtherElementsIgnoredAsync()
+        {
+            var testCode = @"
+/// <summary>
+/// <p:see langword=""not a keyword""/>
+/// </summary>
+/// 
+class TestClass
+{
+}
+";
+
+            await Verify.VerifyAnalyzerAsync(testCode);
+        }
     }
 }

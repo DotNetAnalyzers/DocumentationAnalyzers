@@ -59,13 +59,9 @@ namespace DocumentationAnalyzers.PortabilityRules
             {
                 attributes = xmlEmptyElement.Attributes;
             }
-            else if (xmlNodeSyntax is XmlElementSyntax xmlElement)
-            {
-                attributes = xmlElement.StartTag.Attributes;
-            }
             else
             {
-                return;
+                attributes = ((XmlElementSyntax)xmlNodeSyntax).StartTag.Attributes;
             }
 
             foreach (var attribute in attributes)
@@ -80,12 +76,7 @@ namespace DocumentationAnalyzers.PortabilityRules
                     continue;
                 }
 
-                if (!(attribute is XmlTextAttributeSyntax xmlTextAttribute))
-                {
-                    continue;
-                }
-
-                var text = xmlTextAttribute.TextTokens;
+                var text = ((XmlTextAttributeSyntax)attribute).TextTokens;
                 string valueText;
                 if (text.Count == 1)
                 {
