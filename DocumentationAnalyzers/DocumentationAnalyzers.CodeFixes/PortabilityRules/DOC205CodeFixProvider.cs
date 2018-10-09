@@ -57,11 +57,15 @@ namespace DocumentationAnalyzers.PortabilityRules
             var candidateSymbol = InheritdocHelper.GetCandidateSymbol(documentedSymbol);
             var candidateDocumentation = candidateSymbol.GetDocumentationCommentXml(expandIncludes: false, cancellationToken: cancellationToken);
 
-            var xmlDocumentation = XElement.Parse(candidateDocumentation);
             var newLineText = Environment.NewLine;
 
             var content = new List<XmlNodeSyntax>();
-            content.AddRange(xmlDocumentation.Elements().Select(element => XmlSyntaxFactory.Node(newLineText, element)));
+            if (!string.IsNullOrEmpty(candidateDocumentation))
+            {
+                var xmlDocumentation = XElement.Parse(candidateDocumentation);
+                content.AddRange(xmlDocumentation.Elements().Select(element => XmlSyntaxFactory.Node(newLineText, element)));
+                content.Add(XmlSyntaxFactory.NewLine(newLineText));
+            }
 
             var newStartToken = SyntaxFactory.Identifier(oldStartToken.LeadingTrivia, XmlCommentHelper.AutoinheritdocXmlTag, oldStartToken.TrailingTrivia);
             var newXmlNode = xmlNode.ReplaceToken(oldStartToken, newStartToken);
@@ -73,7 +77,6 @@ namespace DocumentationAnalyzers.PortabilityRules
                 newXmlNode = newXmlNode.ReplaceToken(oldEndToken, newEndToken);
             }
 
-            content.Add(XmlSyntaxFactory.NewLine(newLineText));
             content.Add(newXmlNode);
 
             return document.WithSyntaxRoot(root.ReplaceNode(xmlNode, content));
