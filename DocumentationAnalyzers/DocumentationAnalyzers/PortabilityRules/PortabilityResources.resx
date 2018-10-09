@@ -189,6 +189,18 @@
   <data name="DOC205Title" xml:space="preserve">
     <value>Inherit documentation</value>
   </data>
+  <data name="DOC206CodeFix" xml:space="preserve">
+    <value>Synchronize documentation</value>
+  </data>
+  <data name="DOC206Description" xml:space="preserve">
+    <value>Synchronize documentation</value>
+  </data>
+  <data name="DOC206MessageFormat" xml:space="preserve">
+    <value>Synchronize documentation</value>
+  </data>
+  <data name="DOC206Title" xml:space="preserve">
+    <value>Synchronize documentation</value>
+  </data>
   <data name="DOC207Description" xml:space="preserve">
     <value>'langword' attribute value should be a language keyword</value>
   </data>

@@ -278,6 +278,42 @@ namespace DocumentationAnalyzers.PortabilityRules {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Synchronize documentation.
+        /// </summary>
+        internal static string DOC206CodeFix {
+            get {
+                return ResourceManager.GetString("DOC206CodeFix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Synchronize documentation.
+        /// </summary>
+        internal static string DOC206Description {
+            get {
+                return ResourceManager.GetString("DOC206Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Synchronize documentation.
+        /// </summary>
+        internal static string DOC206MessageFormat {
+            get {
+                return ResourceManager.GetString("DOC206MessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Synchronize documentation.
+        /// </summary>
+        internal static string DOC206Title {
+            get {
+                return ResourceManager.GetString("DOC206Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &apos;langword&apos; attribute value should be a language keyword.
         /// </summary>
         internal static string DOC207Description {

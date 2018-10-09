@@ -18,6 +18,7 @@ namespace DocumentationAnalyzers.Helpers
         internal const string SummaryXmlTag = "summary";
         internal const string ContentXmlTag = "content";
         internal const string InheritdocXmlTag = "inheritdoc";
+        internal const string AutoinheritdocXmlTag = "autoinheritdoc";
         internal const string ReturnsXmlTag = "returns";
         internal const string ValueXmlTag = "value";
         internal const string CXmlTag = "c";

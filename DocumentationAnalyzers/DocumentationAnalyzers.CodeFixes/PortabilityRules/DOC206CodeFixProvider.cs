@@ -19,12 +19,12 @@ namespace DocumentationAnalyzers.PortabilityRules
     using Microsoft.CodeAnalysis.CSharp;
     using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-    [ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(DOC205CodeFixProvider))]
+    [ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(DOC206CodeFixProvider))]
     [Shared]
-    internal class DOC205CodeFixProvider : CodeFixProvider
+    internal class DOC206CodeFixProvider : CodeFixProvider
     {
         public override ImmutableArray<string> FixableDiagnosticIds { get; }
-            = ImmutableArray.Create(DOC205InheritDocumentation.DiagnosticId);
+            = ImmutableArray.Create(DOC206SynchronizeDocumentation.DiagnosticId);
 
         public override FixAllProvider GetFixAllProvider()
             => CustomFixAllProviders.BatchFixer;
@@ -37,9 +37,9 @@ namespace DocumentationAnalyzers.PortabilityRules
 
                 context.RegisterCodeFix(
                     CodeAction.Create(
-                        PortabilityResources.DOC205CodeFix,
+                        PortabilityResources.DOC206CodeFix,
                         token => GetTransformedDocumentAsync(context.Document, diagnostic, token),
-                        nameof(DOC205CodeFixProvider)),
+                        nameof(DOC206CodeFixProvider)),
                     diagnostic);
             }
 
@@ -62,21 +62,12 @@ namespace DocumentationAnalyzers.PortabilityRules
 
             var content = new List<XmlNodeSyntax>();
             content.AddRange(xmlDocumentation.Elements().Select(element => XmlSyntaxFactory.Node(newLineText, element)));
-
-            var newStartToken = SyntaxFactory.Identifier(oldStartToken.LeadingTrivia, XmlCommentHelper.AutoinheritdocXmlTag, oldStartToken.TrailingTrivia);
-            var newXmlNode = xmlNode.ReplaceToken(oldStartToken, newStartToken);
-
-            if (newXmlNode is XmlElementSyntax newXmlElement)
-            {
-                var oldEndToken = newXmlElement.EndTag.Name.LocalName;
-                var newEndToken = SyntaxFactory.Identifier(oldEndToken.LeadingTrivia, XmlCommentHelper.AutoinheritdocXmlTag, oldEndToken.TrailingTrivia);
-                newXmlNode = newXmlNode.ReplaceToken(oldEndToken, newEndToken);
-            }
-
             content.Add(XmlSyntaxFactory.NewLine(newLineText));
-            content.Add(newXmlNode);
+            content.Add(xmlNode);
 
-            return document.WithSyntaxRoot(root.ReplaceNode(xmlNode, content));
+            return document.WithSyntaxRoot(root.ReplaceNode(
+                xmlNode.FirstAncestorOrSelf<DocumentationCommentTriviaSyntax>(),
+                XmlSyntaxFactory.DocumentationComment(newLineText, content.ToArray())));
         }
     }
 }
