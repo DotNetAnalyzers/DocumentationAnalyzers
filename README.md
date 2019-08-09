@@ -16,7 +16,7 @@ The preferable way to use the analyzers is to add the nuget package [DotNetAnaly
 to the project where you want to enforce documentation rules.
 
 The severity of individual rules may be configured using [rule set files](https://docs.microsoft.com/en-us/visualstudio/code-quality/using-rule-sets-to-group-code-analysis-rules)
-in Visual Studio 2015 or newer. See [Configuration.md](docs/Configuration.md) for more information.
+in Visual Studio 2015 or newer. For Visual Studio 2019 version 16.3 and newer, the severity of individual rules may be configured using **.editorconfig**.
 
 For documentation and reasoning on the rules themselves, see the [DOCUMENTATION.md](DOCUMENTATION.md).
 
