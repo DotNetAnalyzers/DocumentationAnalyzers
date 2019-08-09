@@ -71,6 +71,8 @@ namespace DocumentationAnalyzers.Test
 
             public override string Language => LanguageNames.CSharp;
 
+            public override Type SyntaxKindType => typeof(SyntaxKind);
+
             protected override string DefaultFileExt => "cs";
 
             protected override CompilationOptions CreateCompilationOptions()
