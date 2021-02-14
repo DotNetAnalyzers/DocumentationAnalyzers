@@ -5,7 +5,7 @@ namespace DocumentationAnalyzers.Test.PortabilityRules
 {
     using System.Threading.Tasks;
     using Xunit;
-    using Verify = Microsoft.CodeAnalysis.CSharp.Testing.CSharpCodeFixVerifier<DocumentationAnalyzers.PortabilityRules.DOC203UseBlockElementsCorrectly, DocumentationAnalyzers.PortabilityRules.DOC203CodeFixProvider, Microsoft.CodeAnalysis.Testing.Verifiers.XUnitVerifier>;
+    using Verify = DocumentationAnalyzers.Test.CSharpCodeFixVerifier<DocumentationAnalyzers.PortabilityRules.DOC203UseBlockElementsCorrectly, DocumentationAnalyzers.PortabilityRules.DOC203CodeFixProvider>;
 
     public class DOC203UnitTests
     {

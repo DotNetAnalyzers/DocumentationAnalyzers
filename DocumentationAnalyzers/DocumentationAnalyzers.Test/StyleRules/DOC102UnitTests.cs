@@ -3,15 +3,11 @@
 
 namespace DocumentationAnalyzers.Test.StyleRules
 {
-    using System.Collections.Generic;
-    using System.Threading;
     using System.Threading.Tasks;
     using DocumentationAnalyzers.StyleRules;
-    using Microsoft.CodeAnalysis.CodeFixes;
-    using Microsoft.CodeAnalysis.Diagnostics;
     using Microsoft.CodeAnalysis.Testing;
     using Xunit;
-    using Verify = Microsoft.CodeAnalysis.CSharp.Testing.CSharpCodeFixVerifier<DocumentationAnalyzers.StyleRules.DOC102UseChildBlocksConsistentlyAcrossElementsOfTheSameKind, DocumentationAnalyzers.StyleRules.BlockLevelDocumentationCodeFixProvider, Microsoft.CodeAnalysis.Testing.Verifiers.XUnitVerifier>;
+    using Verify = DocumentationAnalyzers.Test.CSharpCodeFixVerifier<DocumentationAnalyzers.StyleRules.DOC102UseChildBlocksConsistentlyAcrossElementsOfTheSameKind, DocumentationAnalyzers.StyleRules.BlockLevelDocumentationCodeFixProvider>;
 
     /// <summary>
     /// This class contains unit tests for <see cref="DOC102UseChildBlocksConsistentlyAcrossElementsOfTheSameKind"/>.

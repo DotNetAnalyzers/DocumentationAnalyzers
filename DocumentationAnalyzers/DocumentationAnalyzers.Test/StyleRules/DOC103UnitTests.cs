@@ -4,12 +4,9 @@
 namespace DocumentationAnalyzers.Test.StyleRules
 {
     using System.Threading.Tasks;
-    using DocumentationAnalyzers.StyleRules;
-    using Microsoft.CodeAnalysis.CSharp.Testing;
     using Microsoft.CodeAnalysis.Testing;
-    using Microsoft.CodeAnalysis.Testing.Verifiers;
     using Xunit;
-    using Verify = Microsoft.CodeAnalysis.CSharp.Testing.CSharpCodeFixVerifier<DocumentationAnalyzers.StyleRules.DOC103UseUnicodeCharacters, DocumentationAnalyzers.StyleRules.DOC103CodeFixProvider, Microsoft.CodeAnalysis.Testing.Verifiers.XUnitVerifier>;
+    using Verify = DocumentationAnalyzers.Test.CSharpCodeFixVerifier<DocumentationAnalyzers.StyleRules.DOC103UseUnicodeCharacters, DocumentationAnalyzers.StyleRules.DOC103CodeFixProvider>;
 
     public class DOC103UnitTests
     {
@@ -102,7 +99,7 @@ class TestClass
 }
 ";
 
-            await new CSharpCodeFixTest<DOC103UseUnicodeCharacters, DOC103CodeFixProvider, XUnitVerifier>
+            await new Verify.Test
             {
                 TestCode = testCode,
                 ExpectedDiagnostics = { DiagnosticResult.CompilerWarning("CS1570").WithSpan(3, 11, 3, 11).WithMessage("XML comment has badly formed XML -- 'Reference to undefined entity 'rarr'.'") },
@@ -124,7 +121,7 @@ class TestClass
 ";
             var fixedCode = testCode;
 
-            await new CSharpCodeFixTest<DOC103UseUnicodeCharacters, DOC103CodeFixProvider, XUnitVerifier>
+            await new Verify.Test
             {
                 TestState =
                 {
@@ -164,7 +161,7 @@ class TestClass
 }
 ";
 
-            await new CSharpCodeFixTest<DOC103UseUnicodeCharacters, DOC103CodeFixProvider, XUnitVerifier>
+            await new Verify.Test
             {
                 TestState =
                 {
@@ -220,7 +217,7 @@ class TestClass
 ";
             var fixedCode = testCode;
 
-            await new CSharpCodeFixTest<DOC103UseUnicodeCharacters, DOC103CodeFixProvider, XUnitVerifier>
+            await new Verify.Test
             {
                 TestState =
                 {

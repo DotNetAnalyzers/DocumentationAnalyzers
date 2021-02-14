@@ -5,7 +5,7 @@ namespace DocumentationAnalyzers.Test.RefactoringRules
 {
     using System.Threading.Tasks;
     using Xunit;
-    using Verify = Microsoft.CodeAnalysis.CSharp.Testing.CSharpCodeFixVerifier<DocumentationAnalyzers.RefactoringRules.DOC901ConvertToDocumentationComment, DocumentationAnalyzers.RefactoringRules.DOC901CodeFixProvider, Microsoft.CodeAnalysis.Testing.Verifiers.XUnitVerifier>;
+    using Verify = DocumentationAnalyzers.Test.CSharpCodeFixVerifier<DocumentationAnalyzers.RefactoringRules.DOC901ConvertToDocumentationComment, DocumentationAnalyzers.RefactoringRules.DOC901CodeFixProvider>;
 
     public class DOC901UnitTests
     {

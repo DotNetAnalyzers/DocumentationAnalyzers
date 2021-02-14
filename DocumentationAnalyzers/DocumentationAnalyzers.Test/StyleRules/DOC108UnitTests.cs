@@ -6,7 +6,7 @@ namespace DocumentationAnalyzers.Test.StyleRules
     using System.Threading.Tasks;
     using DocumentationAnalyzers.StyleRules;
     using Xunit;
-    using Verify = Microsoft.CodeAnalysis.CSharp.Testing.CSharpCodeFixVerifier<DocumentationAnalyzers.StyleRules.DOC108AvoidEmptyParagraphs, DocumentationAnalyzers.StyleRules.DOC108CodeFixProvider, Microsoft.CodeAnalysis.Testing.Verifiers.XUnitVerifier>;
+    using Verify = DocumentationAnalyzers.Test.CSharpCodeFixVerifier<DocumentationAnalyzers.StyleRules.DOC108AvoidEmptyParagraphs, DocumentationAnalyzers.StyleRules.DOC108CodeFixProvider>;
 
     /// <summary>
     /// This class contains unit tests for <see cref="DOC108AvoidEmptyParagraphs"/>.

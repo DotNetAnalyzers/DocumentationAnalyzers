@@ -7,7 +7,7 @@ namespace DocumentationAnalyzers.Test.PortabilityRules
     using System.Threading.Tasks;
     using Microsoft.CodeAnalysis.CSharp;
     using Xunit;
-    using Verify = Microsoft.CodeAnalysis.CSharp.Testing.CSharpCodeFixVerifier<DocumentationAnalyzers.PortabilityRules.DOC207UseSeeLangwordCorrectly, Microsoft.CodeAnalysis.Testing.EmptyCodeFixProvider, Microsoft.CodeAnalysis.Testing.Verifiers.XUnitVerifier>;
+    using Verify = DocumentationAnalyzers.Test.CSharpCodeFixVerifier<DocumentationAnalyzers.PortabilityRules.DOC207UseSeeLangwordCorrectly, Microsoft.CodeAnalysis.Testing.EmptyCodeFixProvider>;
 
     public class DOC207UnitTests
     {
