@@ -21,7 +21,7 @@ namespace DocumentationAnalyzers.RefactoringRules
         private static readonly LocalizableString Description = new LocalizableResourceString(nameof(RefactoringResources.DOC900Description), RefactoringResources.ResourceManager, typeof(RefactoringResources));
 
         private static readonly DiagnosticDescriptor Descriptor =
-            new DiagnosticDescriptor(DiagnosticId, Title, MessageFormat, AnalyzerCategory.Refactorings, DiagnosticSeverity.Hidden, AnalyzerConstants.EnabledByDefault, Description, HelpLink);
+            new(DiagnosticId, Title, MessageFormat, AnalyzerCategory.Refactorings, DiagnosticSeverity.Hidden, AnalyzerConstants.EnabledByDefault, Description, HelpLink);
 
         /// <inheritdoc/>
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; } =

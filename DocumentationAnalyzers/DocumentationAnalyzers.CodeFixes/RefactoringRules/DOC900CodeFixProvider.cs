@@ -27,7 +27,7 @@ namespace DocumentationAnalyzers.RefactoringRules
     internal partial class DOC900CodeFixProvider : CodeFixProvider
     {
         private static readonly SyntaxAnnotation UnnecessaryParagraphAnnotation =
-            new SyntaxAnnotation("Documentation:UnnecessaryParagraph");
+            new("Documentation:UnnecessaryParagraph");
 
         public override ImmutableArray<string> FixableDiagnosticIds { get; } =
             ImmutableArray.Create(DOC900RenderAsMarkdown.DiagnosticId);

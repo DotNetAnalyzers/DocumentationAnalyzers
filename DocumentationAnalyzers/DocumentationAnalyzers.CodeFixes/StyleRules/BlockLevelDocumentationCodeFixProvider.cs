@@ -171,7 +171,7 @@ namespace DocumentationAnalyzers.StyleRules
                 && firstTextNode.TextTokens.Any())
             {
                 SyntaxToken firstTextToken = firstTextNode.TextTokens[0];
-                string leadingWhitespace = new string(firstTextToken.Text.Cast<char>().TakeWhile(char.IsWhiteSpace).ToArray());
+                string leadingWhitespace = new(firstTextToken.Text.Cast<char>().TakeWhile(char.IsWhiteSpace).ToArray());
                 if (leadingWhitespace.Length > 0)
                 {
                     SyntaxToken newFirstTextToken = XmlSyntaxFactory.TextLiteral(firstTextToken.Text.Substring(leadingWhitespace.Length)).WithTriviaFrom(firstTextToken);
@@ -185,7 +185,7 @@ namespace DocumentationAnalyzers.StyleRules
                 && lastTextNode.TextTokens.Any())
             {
                 SyntaxToken lastTextToken = lastTextNode.TextTokens.Last();
-                string trailingWhitespace = new string(lastTextToken.Text.Cast<char>().Reverse().TakeWhile(char.IsWhiteSpace).Reverse().ToArray());
+                string trailingWhitespace = new(lastTextToken.Text.Cast<char>().Reverse().TakeWhile(char.IsWhiteSpace).Reverse().ToArray());
                 if (trailingWhitespace.Length > 0)
                 {
                     SyntaxToken newLastTextToken = XmlSyntaxFactory.TextLiteral(lastTextToken.Text.Substring(0, lastTextToken.Text.Length - trailingWhitespace.Length)).WithTriviaFrom(lastTextToken);

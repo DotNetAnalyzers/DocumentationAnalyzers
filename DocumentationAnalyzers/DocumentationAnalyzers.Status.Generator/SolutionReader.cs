@@ -23,7 +23,7 @@ namespace DocumentationAnalyzers.Status.Generator
     /// </summary>
     public class SolutionReader
     {
-        private static Regex _diagnosticPathRegex = new Regex(@"(?<type>[A-Za-z]+)Rules\\(?<name>[A-Za-z0-9]+)\.cs$");
+        private static Regex _diagnosticPathRegex = new(@"(?<type>[A-Za-z]+)Rules\\(?<name>[A-Za-z0-9]+)\.cs$");
         private INamedTypeSymbol _diagnosticAnalyzerTypeSymbol;
         private INamedTypeSymbol _noCodeFixAttributeTypeSymbol;
 
