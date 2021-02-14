@@ -45,12 +45,14 @@ If (Test-Path $report_folder) {
 
 mkdir $report_folder | Out-Null
 
+$register_mode = 'user'
 If ($AppVeyor) {
 	$AppVeyorArg = '-appveyor'
+	$register_mode = 'Path32'
 }
 
 &$opencover_console `
-	-register:user `
+	-register:$register_mode `
 	-returntargetcode `
 	-hideskipped:All `
 	-filter:"+[Documentation*]*" `
@@ -66,7 +68,7 @@ If ($AppVeyor -and -not $?) {
 }
 
 &$opencover_console `
-	-register:user `
+	-register:$register_mode `
 	-returntargetcode `
 	-hideskipped:All `
 	-filter:"+[Documentation*]*" `
