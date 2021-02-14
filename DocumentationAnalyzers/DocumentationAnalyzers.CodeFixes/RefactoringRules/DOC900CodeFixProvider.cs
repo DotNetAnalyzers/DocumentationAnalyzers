@@ -266,7 +266,7 @@ namespace DocumentationAnalyzers.RefactoringRules
 
         private SyntaxNode RenderBlockElementAsMarkdown(SyntaxNode originalNode, SyntaxNode rewrittenNode, string newLineText, ISymbol documentedSymbol)
         {
-            if (!(rewrittenNode is XmlElementSyntax elementSyntax))
+            if (rewrittenNode is not XmlElementSyntax elementSyntax)
             {
                 return rewrittenNode;
             }

@@ -101,7 +101,7 @@ namespace DocumentationAnalyzers.PortabilityRules
 
             for (int i = parentContent.IndexOf(xmlNode) - 1; i >= 0; i--)
             {
-                if (!(parentContent[i] is XmlTextSyntax xmlText))
+                if (parentContent[i] is not XmlTextSyntax xmlText)
                 {
                     return false;
                 }
@@ -144,7 +144,7 @@ namespace DocumentationAnalyzers.PortabilityRules
 
             for (int i = parentContent.Count - 1; i >= 0; i--)
             {
-                if (!(parentContent[i] is XmlTextSyntax xmlText))
+                if (parentContent[i] is not XmlTextSyntax xmlText)
                 {
                     return false;
                 }
@@ -184,7 +184,7 @@ namespace DocumentationAnalyzers.PortabilityRules
 
             for (int i = parentContent.IndexOf(xmlNode) + 1; i < parentContent.Count; i++)
             {
-                if (!(parentContent[i] is XmlTextSyntax xmlText))
+                if (parentContent[i] is not XmlTextSyntax xmlText)
                 {
                     return false;
                 }
@@ -220,7 +220,7 @@ namespace DocumentationAnalyzers.PortabilityRules
 
             for (int i = 0; i < parentContent.Count; i++)
             {
-                if (!(parentContent[i] is XmlTextSyntax xmlText))
+                if (parentContent[i] is not XmlTextSyntax xmlText)
                 {
                     return false;
                 }
@@ -258,7 +258,7 @@ namespace DocumentationAnalyzers.PortabilityRules
         {
             Debug.Assert(!RequiresSectionContent(parent), "Assertion failed: !RequiresSectionContent(parent)");
 
-            if (!(parent is XmlNodeSyntax xmlNode))
+            if (parent is not XmlNodeSyntax xmlNode)
             {
                 // Unrecognized parent element kind => unknown content kind
                 return false;
