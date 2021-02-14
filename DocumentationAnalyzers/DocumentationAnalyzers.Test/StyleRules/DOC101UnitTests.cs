@@ -7,7 +7,7 @@ namespace DocumentationAnalyzers.Test.StyleRules
     using DocumentationAnalyzers.StyleRules;
     using Microsoft.CodeAnalysis.Testing;
     using Xunit;
-    using Verify = Microsoft.CodeAnalysis.CSharp.Testing.CSharpCodeFixVerifier<DocumentationAnalyzers.StyleRules.DOC101UseChildBlocksConsistently, DocumentationAnalyzers.StyleRules.BlockLevelDocumentationCodeFixProvider, Microsoft.CodeAnalysis.Testing.Verifiers.XUnitVerifier>;
+    using Verify = DocumentationAnalyzers.Test.CSharpCodeFixVerifier<DocumentationAnalyzers.StyleRules.DOC101UseChildBlocksConsistently, DocumentationAnalyzers.StyleRules.BlockLevelDocumentationCodeFixProvider>;
 
     /// <summary>
     /// This class contains unit tests for <see cref="DOC101UseChildBlocksConsistently"/>.

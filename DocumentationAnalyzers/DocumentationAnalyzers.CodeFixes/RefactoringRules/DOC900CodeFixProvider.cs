@@ -27,7 +27,7 @@ namespace DocumentationAnalyzers.RefactoringRules
     internal partial class DOC900CodeFixProvider : CodeFixProvider
     {
         private static readonly SyntaxAnnotation UnnecessaryParagraphAnnotation =
-            new SyntaxAnnotation("Documentation:UnnecessaryParagraph");
+            new("Documentation:UnnecessaryParagraph");
 
         public override ImmutableArray<string> FixableDiagnosticIds { get; } =
             ImmutableArray.Create(DOC900RenderAsMarkdown.DiagnosticId);
@@ -266,7 +266,7 @@ namespace DocumentationAnalyzers.RefactoringRules
 
         private SyntaxNode RenderBlockElementAsMarkdown(SyntaxNode originalNode, SyntaxNode rewrittenNode, string newLineText, ISymbol documentedSymbol)
         {
-            if (!(rewrittenNode is XmlElementSyntax elementSyntax))
+            if (rewrittenNode is not XmlElementSyntax elementSyntax)
             {
                 return rewrittenNode;
             }

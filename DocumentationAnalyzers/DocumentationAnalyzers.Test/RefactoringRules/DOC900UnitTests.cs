@@ -6,10 +6,9 @@ namespace DocumentationAnalyzers.Test.RefactoringRules
     using System;
     using System.Threading.Tasks;
     using DocumentationAnalyzers.RefactoringRules;
-    using Microsoft.CodeAnalysis.CSharp.Testing;
     using Microsoft.CodeAnalysis.Testing;
-    using Microsoft.CodeAnalysis.Testing.Verifiers;
     using Xunit;
+    using Verify = DocumentationAnalyzers.Test.CSharpCodeFixVerifier<DocumentationAnalyzers.RefactoringRules.DOC900RenderAsMarkdown, DocumentationAnalyzers.RefactoringRules.DOC900CodeFixProvider>;
 
     /// <summary>
     /// This class contains unit tests for <see cref="DOC900RenderAsMarkdown"/>.
@@ -263,7 +262,7 @@ class TestClass {
                 iterations = testCode.Split(new[] { "$$" }, StringSplitOptions.None).Length;
             }
 
-            await new CSharpCodeFixTest<DOC900RenderAsMarkdown, DOC900CodeFixProvider, XUnitVerifier>
+            await new Verify.Test
             {
                 TestCode = testCode,
                 FixedCode = fixedCode,

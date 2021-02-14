@@ -1,6 +1,6 @@
 param (
 	[switch]$Debug,
-	[string]$VisualStudioVersion = '15.0',
+	[string]$VisualStudioVersion = '16.0',
 	[switch]$SkipKeyCheck,
 	[string]$Verbosity = 'minimal',
 	[string]$Logger,
@@ -45,7 +45,7 @@ If (-not (Test-Path $nuget)) {
 
 # build the main project
 $visualStudio = (Get-ItemProperty 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\VisualStudio\SxS\VS7')."$VisualStudioVersion"
-$msbuild = "$visualStudio\MSBuild\$VisualStudioVersion\Bin\MSBuild.exe"
+$msbuild = "$visualStudio\MSBuild\Current\Bin\MSBuild.exe"
 If (-not (Test-Path $msbuild)) {
 	$host.UI.WriteErrorLine("Couldn't find MSBuild.exe")
 	exit 1

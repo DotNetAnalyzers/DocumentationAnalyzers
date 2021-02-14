@@ -6,7 +6,7 @@ namespace DocumentationAnalyzers.Test.PortabilityRules
     using System.Threading.Tasks;
     using DocumentationAnalyzers.PortabilityRules;
     using Xunit;
-    using Verify = Microsoft.CodeAnalysis.CSharp.Testing.CSharpCodeFixVerifier<DocumentationAnalyzers.PortabilityRules.DOC200UseXmlDocumentationSyntax, DocumentationAnalyzers.PortabilityRules.DOC200CodeFixProvider, Microsoft.CodeAnalysis.Testing.Verifiers.XUnitVerifier>;
+    using Verify = DocumentationAnalyzers.Test.CSharpCodeFixVerifier<DocumentationAnalyzers.PortabilityRules.DOC200UseXmlDocumentationSyntax, DocumentationAnalyzers.PortabilityRules.DOC200CodeFixProvider>;
 
     /// <summary>
     /// This class contains unit tests for <see cref="DOC200UseXmlDocumentationSyntax"/>.

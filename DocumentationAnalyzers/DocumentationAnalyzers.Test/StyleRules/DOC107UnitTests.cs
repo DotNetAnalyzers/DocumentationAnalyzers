@@ -6,7 +6,7 @@ namespace DocumentationAnalyzers.Test.StyleRules
     using System.Threading.Tasks;
     using DocumentationAnalyzers.StyleRules;
     using Xunit;
-    using Verify = Microsoft.CodeAnalysis.CSharp.Testing.CSharpCodeFixVerifier<DocumentationAnalyzers.StyleRules.DOC107UseSeeCref, DocumentationAnalyzers.StyleRules.DOC107CodeFixProvider, Microsoft.CodeAnalysis.Testing.Verifiers.XUnitVerifier>;
+    using Verify = DocumentationAnalyzers.Test.CSharpCodeFixVerifier<DocumentationAnalyzers.StyleRules.DOC107UseSeeCref, DocumentationAnalyzers.StyleRules.DOC107CodeFixProvider>;
 
     /// <summary>
     /// This class contains unit tests for <see cref="DOC107UseSeeCref"/>.

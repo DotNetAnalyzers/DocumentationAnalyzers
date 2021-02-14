@@ -5,7 +5,7 @@ namespace DocumentationAnalyzers.Test.PortabilityRules
 {
     using System.Threading.Tasks;
     using Xunit;
-    using Verify = Microsoft.CodeAnalysis.CSharp.Testing.CSharpCodeFixVerifier<DocumentationAnalyzers.PortabilityRules.DOC201ItemShouldHaveDescription, DocumentationAnalyzers.PortabilityRules.DOC201CodeFixProvider, Microsoft.CodeAnalysis.Testing.Verifiers.XUnitVerifier>;
+    using Verify = DocumentationAnalyzers.Test.CSharpCodeFixVerifier<DocumentationAnalyzers.PortabilityRules.DOC201ItemShouldHaveDescription, DocumentationAnalyzers.PortabilityRules.DOC201CodeFixProvider>;
 
     public class DOC201UnitTests
     {

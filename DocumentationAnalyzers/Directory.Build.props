@@ -10,7 +10,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <LangVersion>7.2</LangVersion>
+    <LangVersion>9</LangVersion>
+    <WarningLevel>5</WarningLevel>
     <Features>strict</Features>
   </PropertyGroup>
 
@@ -20,7 +21,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <DebugType>portable</DebugType>
+    <DebugType Condition="'$(Configuration)' == 'Debug'">full</DebugType>
+    <DebugType Condition="'$(Configuration)' != 'Debug'">portable</DebugType>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
 
@@ -43,9 +45,9 @@
 
   <ItemGroup>
     <PackageReference Include="AsyncUsageAnalyzers" Version="1.0.0-alpha003" PrivateAssets="all" />
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta009" PrivateAssets="all" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.321" PrivateAssets="all" />
     <PackageReference Include="DotNetAnalyzers.DocumentationAnalyzers" Version="1.0.0-beta.59" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.CodeStyle" Version="2.11.0-beta2-63603-03" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.CodeStyle" Version="3.8.0" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>

@@ -23,7 +23,7 @@ namespace DocumentationAnalyzers.Status.Generator
     /// </summary>
     public class SolutionReader
     {
-        private static Regex _diagnosticPathRegex = new Regex(@"(?<type>[A-Za-z]+)Rules\\(?<name>[A-Za-z0-9]+)\.cs$");
+        private static Regex _diagnosticPathRegex = new(@"(?<type>[A-Za-z]+)Rules\\(?<name>[A-Za-z0-9]+)\.cs$");
         private INamedTypeSymbol _diagnosticAnalyzerTypeSymbol;
         private INamedTypeSymbol _noCodeFixAttributeTypeSymbol;
 
@@ -241,7 +241,7 @@ namespace DocumentationAnalyzers.Status.Generator
 
                 // We use the fact that the only parameter that returns a boolean is the one we are interested in
                 var enabledByDefaultParameter = from argument in initializer.ArgumentList.Arguments
-                                                where Equals(model.GetTypeInfo(argument.Expression).Type, _booleanType)
+                                                where SymbolEqualityComparer.Default.Equals(model.GetTypeInfo(argument.Expression).Type, _booleanType)
                                                 select argument.Expression;
                 var parameter = enabledByDefaultParameter.FirstOrDefault();
                 string parameterString = parameter.ToString();
@@ -266,7 +266,7 @@ namespace DocumentationAnalyzers.Status.Generator
             return analyzer.SupportedDiagnostics;
         }
 
-        private (CodeFixStatus, FixAllStatus) GetCodeFixAndFixAllStatus(string diagnosticId, INamedTypeSymbol classSymbol, out string noCodeFixReason)
+        private (CodeFixStatus codeFixStatus, FixAllStatus fixAllStatus) GetCodeFixAndFixAllStatus(string diagnosticId, INamedTypeSymbol classSymbol, out string noCodeFixReason)
         {
             CodeFixStatus codeFixStatus;
             FixAllStatus fixAllStatus;
@@ -275,7 +275,7 @@ namespace DocumentationAnalyzers.Status.Generator
 
             var noCodeFixAttribute = classSymbol
                 .GetAttributes()
-                .SingleOrDefault(x => Equals(x.AttributeClass, _noCodeFixAttributeTypeSymbol));
+                .SingleOrDefault(x => SymbolEqualityComparer.Default.Equals(x.AttributeClass, _noCodeFixAttributeTypeSymbol));
 
             bool hasCodeFix = noCodeFixAttribute == null;
             if (!hasCodeFix)
@@ -334,7 +334,7 @@ namespace DocumentationAnalyzers.Status.Generator
         {
             while (declaration != null)
             {
-                if (declaration.Equals(possibleBaseType))
+                if (SymbolEqualityComparer.Default.Equals(declaration, possibleBaseType))
                 {
                     return true;
                 }

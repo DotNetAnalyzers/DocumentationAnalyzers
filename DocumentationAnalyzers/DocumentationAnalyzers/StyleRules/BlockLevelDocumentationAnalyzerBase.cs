@@ -149,6 +149,9 @@ namespace DocumentationAnalyzers.StyleRules
 
         private static bool IsBlockLevelName(XmlNameSyntax name, bool includePotentialElements)
         {
+            // Not currently needed by this method
+            _ = includePotentialElements;
+
             if (name == null || name.LocalName.IsMissingOrDefault())
             {
                 // unrecognized => allow
