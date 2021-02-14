@@ -5,11 +5,22 @@ namespace DocumentationAnalyzers.Test
 {
     using System;
     using System.Collections.Immutable;
+    using System.Net;
     using Microsoft.CodeAnalysis;
     using Microsoft.CodeAnalysis.CSharp;
 
     internal static class CSharpVerifierHelper
     {
+        static CSharpVerifierHelper()
+        {
+            // If we have outdated defaults from the host unit test application targeting an older .NET Framework, use
+            // more reasonable TLS protocol version for outgoing connections.
+            if (ServicePointManager.SecurityProtocol == (SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls))
+            {
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            }
+        }
+
         /// <summary>
         /// Gets the configuration for diagnostics set by <c>nullable</c>.
         /// </summary>

@@ -3,6 +3,7 @@
 
 namespace DocumentationAnalyzers.Test
 {
+    using System.Runtime.CompilerServices;
     using Microsoft.CodeAnalysis.CodeFixes;
     using Microsoft.CodeAnalysis.Diagnostics;
     using Microsoft.CodeAnalysis.Testing.Verifiers;
@@ -14,6 +15,10 @@ namespace DocumentationAnalyzers.Test
     {
         public class Test : VisualBasicCodeFixTest<TAnalyzer, TCodeFix, XUnitVerifier>
         {
+            public Test()
+            {
+                RuntimeHelpers.RunClassConstructor(typeof(CSharpVerifierHelper).TypeHandle);
+            }
         }
     }
 }

@@ -3,6 +3,7 @@
 
 namespace DocumentationAnalyzers.Test
 {
+    using System.Runtime.CompilerServices;
     using Microsoft.CodeAnalysis.Diagnostics;
     using Microsoft.CodeAnalysis.Testing.Verifiers;
     using Microsoft.CodeAnalysis.VisualBasic.Testing;
@@ -14,6 +15,7 @@ namespace DocumentationAnalyzers.Test
         {
             public Test()
             {
+                RuntimeHelpers.RunClassConstructor(typeof(CSharpVerifierHelper).TypeHandle);
             }
         }
     }

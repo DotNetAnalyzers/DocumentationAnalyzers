@@ -3,6 +3,7 @@
 
 namespace DocumentationAnalyzers.Test
 {
+    using System.Runtime.CompilerServices;
     using Microsoft.CodeAnalysis.CodeRefactorings;
     using Microsoft.CodeAnalysis.CSharp.Testing;
     using Microsoft.CodeAnalysis.Testing.Verifiers;
@@ -14,6 +15,8 @@ namespace DocumentationAnalyzers.Test
         {
             public Test()
             {
+                RuntimeHelpers.RunClassConstructor(typeof(CSharpVerifierHelper).TypeHandle);
+
                 SolutionTransforms.Add((solution, projectId) =>
                 {
                     var compilationOptions = solution.GetProject(projectId).CompilationOptions;
